@@ -1,0 +1,10 @@
+{
+  "name": "abakus",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
