@@ -1,0 +1,24 @@
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+  background: #fff;
+  color: #111;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.thumb img {
+  width: 100%;
+  display: block;
+}
+.thumb h2 {
+  margin: 0.5rem 0 0;
+  font-size: 1.2rem;
+}
+.thumb p {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0.2rem 0 0;
+}
