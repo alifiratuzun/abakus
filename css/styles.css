@@ -2,10 +2,15 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 2rem;
   background: #fff;
   color: #111;
   box-sizing: border-box;
+}
+
+header, main, article {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 header {
@@ -13,7 +18,7 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
 }
 
 nav a {
@@ -22,12 +27,17 @@ nav a {
   color: #555;
 }
 
+#search {
+  margin-left: 1rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   width: 100%;
-  padding: 2rem;
   box-sizing: border-box;
 }
 
