@@ -2,7 +2,7 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  padding: 2rem;
+  padding: 0;
   background: #fff;
   color: #111;
   box-sizing: border-box;
@@ -10,6 +10,7 @@ body {
 
 header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
@@ -23,11 +24,17 @@ nav a {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .thumb img {
