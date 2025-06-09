@@ -7,3 +7,11 @@ document.querySelectorAll('nav a[data-filter]').forEach(link => {
     });
   });
 });
+
+document.getElementById('search').addEventListener('input', function(e) {
+  const term = e.target.value.toLowerCase();
+  document.querySelectorAll('.thumb').forEach(el => {
+    const text = el.textContent.toLowerCase();
+    el.style.display = text.includes(term) ? 'block' : 'none';
+  });
+});
