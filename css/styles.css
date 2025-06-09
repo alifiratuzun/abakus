@@ -1,38 +1,51 @@
+
 body {
   font-family: sans-serif;
-  margin: 2rem;
+  margin: 0;
+  padding: 2rem;
   background: #fff;
   color: #111;
+  box-sizing: border-box;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: 1rem 2rem;
 }
+
 nav a {
   margin-left: 1rem;
   text-decoration: none;
   color: #555;
 }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
 }
+
 .thumb img {
   width: 100%;
   display: block;
 }
+
 .thumb h2 {
   margin: 0.5rem 0 0;
   font-size: 1.2rem;
 }
+
 .thumb p {
   font-size: 0.9rem;
   color: #888;
   margin: 0.2rem 0 0;
 }
+
 .project img {
   width: 100%;
   margin-bottom: 1rem;
