@@ -7,24 +7,53 @@
   <link rel="icon" type="image/png" href="/img/favicon.png">
 </head>
 <body>
-  <header>
-    <div class="logo-area">
-      <img src="/img/favicon.png" alt="Logo" class="logo">
-      <h1><a href="/">ABAKUS</a></h1>
-    </div>
-    <nav>
-      <input type="text" id="search" placeholder="Search projects...">
-      <a href="/">All</a>
-      <a href="#" data-filter="house">Houses</a>
-      <a href="#" data-filter="cultural">Cultural</a>
-      <a href="#" data-filter="2022">2022</a>
-      <a href="#" data-filter="2023">2023</a>
-      <a href="#" data-filter="2024">2024</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-    </nav>
-  </header>
-  
-  <script src="/js/filter.js"></script>
+  <main>
+    <header>
+      <div class="logo-area">
+        <img src="/img/favicon.png" alt="Logo" class="logo">
+        <h1><a href="/">ABAKUS</a></h1>
+      </div>
+      <nav>
+        <input type="text" id="search" placeholder="Search projects...">
+        <a href="/">All</a>
+        <a href="#" data-filter="house">Houses</a>
+        <a href="#" data-filter="cultural">Cultural</a>
+        <a href="#" data-filter="2022">2022</a>
+        <a href="#" data-filter="2023">2023</a>
+        <a href="#" data-filter="2024">2024</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="grid">
+  <article class="thumb">
+    <a href="/projects/casa-blanca/">
+      <img src="/img/casa-blanca.jpg" alt="Casa Blanca" />
+    </a>
+    <h2>Casa Blanca</h2>
+    <p>Minimalist house in the Mediterranean.</p>
+  </article>
+  <article class="thumb">
+    <a href="/projects/museum-surface/">
+      <img src="/img/museum-surface-1.jpg" alt="Museum Surface" />
+    </a>
+    <h2>Museum Surface</h2>
+    <p>Contemporary art museum with fluid forms.</p>
+  </article>
+  <article class="thumb">
+    <a href="/projects/casa-porto/">
+      <img src="/img/casa-porto.jpg" alt="Casa Porto" />
+    </a>
+    <h2>Casa Porto</h2>
+    <p>Concrete home on the Portuguese coast.</p>
+  </article>
+</div>
+
+
+    
+    
+    <script src="/js/filter.js"></script>
+  </main>
 </body>
 </html>
