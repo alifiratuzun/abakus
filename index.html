@@ -6,17 +6,40 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <header><h1>ABAKUS</h1></header>
+  <header>
+    <h1><a href="/">ABAKUS</a></h1>
+    <nav>
+      <a href="/">All</a>
+      <a href="#" data-filter="house">Houses</a>
+      <a href="#" data-filter="cultural">Cultural</a>
+      <a href="#" data-filter="2022">2022</a>
+      <a href="#" data-filter="2023">2023</a>
+      <a href="#" data-filter="2024">2024</a>
+    </nav>
+  </header>
   
   <main class="grid">
     
-      <a class="thumb" href="/projects/casa-porto/">
-        <img src="/img/casa-porto.jpg" alt="Casa Porto">
+      <a class="thumb" href="/projects/casa-blanca/" data-type="house" data-year="2022">
+        <img src="/img/casa-blanca-1.jpg" alt="Casa Blanca">
+        <h2>Casa Blanca</h2>
+        <p>Andalusia, Spain – 2022</p>
+      </a>
+    
+      <a class="thumb" href="/projects/casa-porto/" data-type="house" data-year="2023">
+        <img src="/img/casa-porto-1.jpg" alt="Casa Porto">
         <h2>Casa Porto</h2>
         <p>Porto, Portugal – 2023</p>
       </a>
     
+      <a class="thumb" href="/projects/museum-surface/" data-type="cultural" data-year="2024">
+        <img src="/img/museum-surface-1.jpg" alt="Museum Surface">
+        <h2>Museum Surface</h2>
+        <p>Berlin, Germany – 2024</p>
+      </a>
+    
   </main>
 
+  <script src="/js/filter.js"></script>
 </body>
 </html>

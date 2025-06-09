@@ -4,6 +4,17 @@ body {
   background: #fff;
   color: #111;
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #555;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -21,4 +32,8 @@ body {
   font-size: 0.9rem;
   color: #888;
   margin: 0.2rem 0 0;
+}
+.project img {
+  width: 100%;
+  margin-bottom: 1rem;
 }
