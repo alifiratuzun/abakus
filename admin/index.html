@@ -4,73 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Abakus Admin</title>
-  <script>
-    window.CMS_MANUAL_INIT = true;
-  </script>
-  <script src="https://unpkg.com/decap-cms@3.3.0/dist/decap-cms.js"></script>
 </head>
 
 <body>
-  <div id="login" style="font-family: sans-serif; padding: 2rem;">
-    <button onclick="startLogin()">🔐 Login with GitHub</button>
-  </div>
-
-  <script>
-    const tokenMatch = window.location.hash.match(/access_token=([^&]+)/);
-    if (tokenMatch) {
-      const token = tokenMatch[1];
-      document.getElementById("login").remove(); // hide login button
-      window.CMS.init({
-        config: {
-          backend: {
-            name: "github",
-            repo: "alifiratuzun/abakus",
-            branch: "main",
-            auth_scope: "repo",
-            base_url: "https://abakus-studio.netlify.app",
-            auth_endpoint: "/.netlify/functions/auth",
-            token: token
-          },
-          media_folder: "img",
-          public_folder: "/img",
-          collections: [
-            {
-              name: "projects",
-              label: "Projects",
-              folder: "projects",
-              create: true,
-              slug: "{{slug}}",
-              fields: [
-                { label: "Title", name: "title", widget: "string" },
-                { label: "Year", name: "year", widget: "number" },
-                { label: "Location", name: "location", widget: "string" },
-                { label: "Architect", name: "architect", widget: "string" },
-                { label: "Type", name: "type", widget: "string" },
-                { label: "Description", name: "body", widget: "markdown" },
-                {
-                  label: "Images",
-                  name: "images",
-                  widget: "list",
-                  field: { label: "Image", name: "image", widget: "image" }
-                },
-                {
-                  label: "Plans",
-                  name: "plans",
-                  widget: "list",
-                  field: { label: "Plan", name: "plan", widget: "image" }
-                },
-                { label: "Layout", name: "layout", widget: "hidden", default: "project.njk" }
-              ]
-            }
-          ]
-        }
-      });
-    }
-
-    function startLogin() {
-      window.location.href = "/.netlify/functions/auth";
-    }
-  </script>
+  <script src="https://unpkg.com/decap-cms@3.3.0/dist/decap-cms.js"></script>
 </body>
 
 </html>

@@ -32,10 +32,22 @@ exports.handler = async (event, context) => {
         };
     }
 
+    // Set token into localStorage using a tiny redirect page
+    const redirectHTML = `
+      <script>
+        localStorage.setItem('netlify-cms-user', JSON.stringify({
+          token: "${data.access_token}",
+          backendName: "github"
+        }));
+        window.location.href = "/admin";
+      </script>
+    `;
+
     return {
-        statusCode: 302,
+        statusCode: 200,
         headers: {
-            Location: `https://abakus-studio.netlify.app/admin/#access_token=${data.access_token}`,
+            'Content-Type': 'text/html',
         },
+        body: redirectHTML,
     };
 };
