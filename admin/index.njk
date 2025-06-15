@@ -1,19 +1,36 @@
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", (user) => {
-      if (!user) {
-        const token = window.location.hash.match(/invite_token=/);
-        if (token) {
-          window.netlifyIdentity.open("signup");
-        } else {
-          window.netlifyIdentity.open("login");
-        }
+<!doctype html>
+<html>
 
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-    window.netlifyIdentity.init();
-  }
-</script>
+<head>
+  <meta charset="utf-8" />
+  <title>Content Manager</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+  <div id="nc-root"></div>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          const token = window.location.hash.match(/invite_token=/);
+          if (token) {
+            window.netlifyIdentity.open("signup");
+          } else {
+            window.netlifyIdentity.open("login");
+          }
+
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+      window.netlifyIdentity.init();
+    }
+  </script>
+
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</body>
+
+</html>
