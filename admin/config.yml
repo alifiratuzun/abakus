@@ -24,3 +24,15 @@ collections:
       - { label: "Type", name: "type", widget: "string" }
       - { label: "Description", name: "body", widget: "markdown" }
       - {
+          label: "Images",
+          name: "images",
+          widget: "list",
+          field: { label: "Image", name: "image", widget: "image" }
+        }
+      - {
+          label: "Plans",
+          name: "plans",
+          widget: "list",
+          field: { label: "Plan", name: "plan", widget: "image" }
+        }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "project.njk" }
