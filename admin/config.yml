@@ -1,12 +1,6 @@
 backend:
-  name: github
-  repo: alifiratuzun/abakus
+  name: git-gateway
   branch: main
-  base_url: https://abakus-studio.netlify.app/.netlify/functions
-  auth_endpoint: /github-auth
-  display_url: https://abakus-studio.netlify.app
-  redirect_uri: https://abakus-studio.netlify.app/admin/callback
-
 
 media_folder: "img"
 public_folder: "/img"
