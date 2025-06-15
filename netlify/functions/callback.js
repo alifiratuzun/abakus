@@ -32,7 +32,6 @@ exports.handler = async (event, context) => {
         };
     }
 
-    // Set token into localStorage using a tiny redirect page
     const redirectHTML = `
       <script>
         localStorage.setItem('netlify-cms-user', JSON.stringify({
