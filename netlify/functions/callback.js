@@ -12,7 +12,12 @@ exports.handler = async (event) => {
     }),
   });
 
-  const data = await response.json();
+  let data;
+  try {
+    data = await response.json();
+  } catch (e) {
+    return { statusCode: 500, body: "GitHub token exchange failed" };
+  };
 
   if (!data.access_token) return { statusCode: 500, body: JSON.stringify(data) };
 

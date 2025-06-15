@@ -3,7 +3,7 @@ backend:
   repo: alifiratuzun/abakus
   branch: main
   base_url: https://abakus-studio.netlify.app
-  auth_endpoint: api/auth
+  auth_endpoint: /.netlify/functions/auth
 
 media_folder: "img"
 public_folder: "/img"
