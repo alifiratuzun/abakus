@@ -2,19 +2,8 @@ backend:
   name: github
   repo: alifiratuzun/abakus
   branch: main
-  site_domain: abakus-studio.netlify.app
-  base_url: https://github.com
-  auth_endpoint: https://github.com/login/oauth/authorize
-  client_id: Ov23liUpWD4ZiILCk0MP
-
-      # backend:
-      # name: github
-      # repo: your-repo-name/your-repo # e.g., your-username/your-repo
-      # branch: main # or your preferred branch
-      # base_url: https://api.netlify.com # Use Netlify's API
-      # auth_endpoint: /api/v1/auth # or the appropriate path if self-hosting
-
-
+  base_url: https://abakus-studio.netlify.app/.netlify/functions
+  auth_endpoint: /github-auth
 
 media_folder: "img"
 public_folder: "/img"
