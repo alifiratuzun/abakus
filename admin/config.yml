@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: alifiratuzun/abakus
   branch: main
+  site_domain: abakus-studio.netlify.app
+
 
 media_folder: "img"
 public_folder: "/img"
