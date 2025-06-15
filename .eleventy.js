@@ -4,10 +4,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("_redirects");
-  eleventyConfig.addPassthroughCopy({
-    "admin/index.html": "admin/index.html"
-  });
-
+  eleventyConfig.addPassthroughCopy("admin");
 
   eleventyConfig.addCollection("project", function (collection) {
     return collection.getFilteredByGlob("projects/*.md");
