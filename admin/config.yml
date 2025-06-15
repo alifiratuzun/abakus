@@ -2,10 +2,10 @@ backend:
   name: github
   repo: alifiratuzun/abakus
   branch: main
-  auth_scope: repo
   base_url: https://abakus-studio.netlify.app
   auth_endpoint: /.netlify/functions/auth
   display_url: https://abakus-studio.netlify.app
+  auth_scope: repo
 
 media_folder: "img"
 public_folder: "/img"
