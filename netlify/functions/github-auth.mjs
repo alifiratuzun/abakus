@@ -19,4 +19,4 @@ export async function handler(event) {
         statusCode: 200,
         body: JSON.stringify(data),
     };
-}
+}  
