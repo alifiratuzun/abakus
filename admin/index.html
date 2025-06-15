@@ -11,10 +11,15 @@
 </head>
 
 <body>
+  <div id="login" style="font-family: sans-serif; padding: 2rem;">
+    <button onclick="startLogin()">🔐 Login with GitHub</button>
+  </div>
+
   <script>
     const tokenMatch = window.location.hash.match(/access_token=([^&]+)/);
     if (tokenMatch) {
       const token = tokenMatch[1];
+      document.getElementById("login").remove(); // hide login button
       window.CMS.init({
         config: {
           backend: {
@@ -24,7 +29,7 @@
             auth_scope: "repo",
             base_url: "https://abakus-studio.netlify.app",
             auth_endpoint: "/.netlify/functions/auth",
-            token: token, // 👈 manually inject the GitHub token
+            token: token
           },
           media_folder: "img",
           public_folder: "/img",
@@ -60,8 +65,10 @@
           ]
         }
       });
-    } else {
-      document.body.innerHTML = "Missing access token. Please login again.";
+    }
+
+    function startLogin() {
+      window.location.href = "/.netlify/functions/auth";
     }
   </script>
 </body>
