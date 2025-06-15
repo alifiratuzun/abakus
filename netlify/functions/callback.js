@@ -25,20 +25,17 @@ exports.handler = async (event, context) => {
 
     const data = await response.json();
 
-    if (data.error) {
+    if (data.error || !data.access_token) {
         return {
             statusCode: 500,
             body: JSON.stringify(data),
         };
     }
 
-    const access_token = data.access_token;
-
-    // ✅ Redirect with token so Decap CMS can use it
     return {
         statusCode: 302,
         headers: {
-            Location: `/admin/#access_token=${access_token}`,
+            Location: `https://abakus-studio.netlify.app/admin/#access_token=${data.access_token}`,
         },
     };
 };
