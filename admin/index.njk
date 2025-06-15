@@ -5,19 +5,22 @@
   <meta charset="utf-8" />
   <title>Content Manager</title>
 
-  <!-- Netlify Identity -->
+  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
 
-  <!-- Manual CMS init to control behavior -->
+<body>
+  <div id="nc-root"></div>
+
   <script>
     window.CMS_MANUAL_INIT = true;
 
-    function startIdentity() {
+    document.addEventListener("DOMContentLoaded", () => {
       if (!window.netlifyIdentity) return;
 
       netlifyIdentity.on("init", user => {
         if (!user) {
-          const hash = window.location.hash || "";
+          const hash = window.location.hash;
           if (hash.includes("invite_token=")) {
             netlifyIdentity.open("signup");
           } else {
@@ -25,22 +28,16 @@
           }
 
           netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
+            window.location.href = "/admin/";
           });
         }
       });
 
       netlifyIdentity.init();
-    }
-
-    document.addEventListener("DOMContentLoaded", startIdentity);
+    });
   </script>
-</head>
 
-<body>
-  <div id="nc-root"></div>
-
-  <!-- Netlify CMS -->
+  <!-- Load CMS AFTER Identity -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 

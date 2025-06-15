@@ -8,7 +8,12 @@
   to = "/admin/index.html"
   status = 200
 
-  [[redirects]]
+[[redirects]]
+  from = "/admin/callback"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
   from = "/#invite_token=:token"
   to = "/admin/#invite_token=:token"
   status = 301
