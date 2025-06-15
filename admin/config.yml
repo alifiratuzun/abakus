@@ -6,6 +6,7 @@ backend:
   auth_endpoint: /.netlify/functions/auth
   display_url: https://abakus-studio.netlify.app
   auth_scope: repo
+  use_graphql: false
 
 media_folder: "img"
 public_folder: "/img"
