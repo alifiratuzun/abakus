@@ -1,35 +1,46 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <title>Content Manager</title>
+
+  <!-- Netlify Identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Manual CMS init to control behavior -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+
+    function startIdentity() {
+      if (!window.netlifyIdentity) return;
+
+      netlifyIdentity.on("init", user => {
+        if (!user) {
+          const hash = window.location.hash || "";
+          if (hash.includes("invite_token=")) {
+            netlifyIdentity.open("signup");
+          } else {
+            netlifyIdentity.open("login");
+          }
+
+          netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+
+      netlifyIdentity.init();
+    }
+
+    document.addEventListener("DOMContentLoaded", startIdentity);
+  </script>
 </head>
 
 <body>
   <div id="nc-root"></div>
 
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", (user) => {
-        if (!user) {
-          const token = window.location.hash.match(/invite_token=/);
-          if (token) {
-            window.netlifyIdentity.open("signup");
-          } else {
-            window.netlifyIdentity.open("login");
-          }
-
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-      window.netlifyIdentity.init();
-    }
-  </script>
-
+  <!-- Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 
