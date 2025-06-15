@@ -10,11 +10,20 @@
 <body>
   <div id="nc-root"></div>
 
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", (user) => {
         if (!user) {
+          // Attempt to catch the invite token manually after init
+          const url = new URL(window.location.href);
+          const invite = url.hash.includes('invite_token');
+
+          if (invite) {
+            window.netlifyIdentity.open('signup');
+          } else {
+            window.netlifyIdentity.open('login');
+          }
+
           window.netlifyIdentity.on("login", () => {
             document.location.href = "/admin/";
           });
@@ -24,6 +33,8 @@
       window.netlifyIdentity.init();
     }
   </script>
+
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 
 </html>
