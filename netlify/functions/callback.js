@@ -28,18 +28,23 @@ exports.handler = async (event, context) => {
     if (data.error || !data.access_token) {
         return {
             statusCode: 500,
-            body: JSON.stringify(data),
+            body: JSON.stringify({ error: data.error || 'No access token received' }),
         };
     }
 
     const redirectHTML = `
-      <script>
-        localStorage.setItem('netlify-cms-user', JSON.stringify({
-          token: "${data.access_token}",
-          backendName: "github"
-        }));
-        window.location.href = "/admin";
-      </script>
+      <html>
+        <body>
+          <script>
+            localStorage.setItem('netlify-cms-user', JSON.stringify({
+              token: "${data.access_token}",
+              backendName: "github"
+            }));
+            console.log('✅ Token stored:', "${data.access_token}");
+            window.location.href = "/admin";
+          </script>
+        </body>
+      </html>
     `;
 
     return {
