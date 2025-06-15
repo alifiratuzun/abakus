@@ -4,11 +4,11 @@
   functions = "netlify/functions"
 
 [[redirects]]
-  from = "/admin/callback"
+  from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
 [[redirects]]
-  from = "/admin/*"
+  from = "/admin/callback"
   to = "/admin/index.html"
   status = 200

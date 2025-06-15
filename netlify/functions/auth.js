@@ -5,8 +5,6 @@ exports.handler = async () => {
 
     return {
         statusCode: 302,
-        headers: {
-            Location: githubAuthURL
-        }
+        headers: { Location: githubAuthURL }
     };
 };
