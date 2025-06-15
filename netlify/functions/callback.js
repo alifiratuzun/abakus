@@ -1,6 +1,5 @@
 exports.handler = async (event, context) => {
     const code = event.queryStringParameters.code;
-
     if (!code) {
         return {
             statusCode: 400,
@@ -13,14 +12,8 @@ exports.handler = async (event, context) => {
 
     const response = await fetch('https://github.com/login/oauth/access_token', {
         method: 'POST',
-        headers: {
-            Accept: 'application/json',
-        },
-        body: new URLSearchParams({
-            client_id,
-            client_secret,
-            code,
-        }),
+        headers: { Accept: 'application/json' },
+        body: new URLSearchParams({ client_id, client_secret, code }),
     });
 
     const data = await response.json();
@@ -28,7 +21,7 @@ exports.handler = async (event, context) => {
     if (data.error || !data.access_token) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: data.error || 'No access token received' }),
+            body: JSON.stringify(data),
         };
     }
 
@@ -40,7 +33,6 @@ exports.handler = async (event, context) => {
               token: "${data.access_token}",
               backendName: "github"
             }));
-            console.log('✅ Token stored:', "${data.access_token}");
             window.location.href = "/admin";
           </script>
         </body>
@@ -49,9 +41,7 @@ exports.handler = async (event, context) => {
 
     return {
         statusCode: 200,
-        headers: {
-            'Content-Type': 'text/html',
-        },
+        headers: { 'Content-Type': 'text/html' },
         body: redirectHTML,
     };
 };
