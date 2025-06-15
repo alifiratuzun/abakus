@@ -32,8 +32,13 @@ exports.handler = async (event, context) => {
         };
     }
 
+    const access_token = data.access_token;
+
+    // ✅ Redirect with token so Decap CMS can use it
     return {
-        statusCode: 200,
-        body: JSON.stringify({ token: data.access_token }),
+        statusCode: 302,
+        headers: {
+            Location: `/admin/#access_token=${access_token}`,
+        },
     };
 };
