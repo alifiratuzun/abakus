@@ -7,6 +7,14 @@ backend:
   auth_endpoint: https://github.com/login/oauth/authorize
   client_id: Ov23liUpWD4ZiILCk0MP
 
+      # backend:
+      # name: github
+      # repo: your-repo-name/your-repo # e.g., your-username/your-repo
+      # branch: main # or your preferred branch
+      # base_url: https://api.netlify.com # Use Netlify's API
+      # auth_endpoint: /api/v1/auth # or the appropriate path if self-hosting
+
+
 
 media_folder: "img"
 public_folder: "/img"
