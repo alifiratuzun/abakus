@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: alifiratuzun/abakus
+  branch: main
+  auth_scope: repo
+  client_id: Ov23lihHZUZkzBaIPcNr
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Year", name: "year", widget: "number" }
+      - { label: "Place", name: "place", widget: "string" }
+      - { label: "Architect", name: "architect", widget: "string", required: false }
+      - { label: "Program", name: "program", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Images", name: "images", widget: "list", required: false,
+          field: { label: "Image", name: "image", widget: "image" }
+        }
+      - { label: "Plans", name: "plans", widget: "list", required: false,
+          field: { label: "Plan", name: "plan", widget: "image" }
+        }
+
