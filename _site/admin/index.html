@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <title>Content Manager</title>
 
-  <!-- Netlify Identity Widget -->
+  <!-- Identity must be loaded BEFORE the body -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
@@ -16,28 +16,25 @@
     window.CMS_MANUAL_INIT = true;
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (!window.netlifyIdentity) return;
+      const identity = window.netlifyIdentity;
+      if (!identity) return;
 
-      netlifyIdentity.on("init", user => {
+      identity.on("init", (user) => {
         if (!user) {
-          const hash = window.location.hash;
-          if (hash.includes("invite_token=")) {
-            netlifyIdentity.open("signup");
-          } else {
-            netlifyIdentity.open("login");
-          }
-
-          netlifyIdentity.on("login", () => {
-            window.location.href = "/admin/";
-          });
+          const hasInvite = window.location.hash.includes("invite_token=");
+          identity.open(hasInvite ? "signup" : "login");
         }
       });
 
-      netlifyIdentity.init();
+      identity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+
+      identity.init();
     });
   </script>
 
-  <!-- Load CMS AFTER Identity -->
+  <!-- Load CMS AFTER identity -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 
