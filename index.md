@@ -1,4 +1,4 @@
 ---
 layout: home.njk
-title: Abakus
+title: abakus
 ---
