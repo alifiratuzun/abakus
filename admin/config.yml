@@ -3,7 +3,7 @@ backend:
   repo: alifiratuzun/abakus
   branch: main
   auth_scope: repo
-  client_id: Ov23liUpWD4ZiILCk0MP
+  client_id: Ov23lihHZUZkzBaIPcNr
 
 media_folder: "img"
 public_folder: "/img"
