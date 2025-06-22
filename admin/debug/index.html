@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Admin Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Admin Debug Information</h1>
+
+    <div class="info">
+        <h3>Current URL Information:</h3>
+        <p><strong>Current URL:</strong> <span id="current-url"></span></p>
+        <p><strong>Hash:</strong> <span id="hash"></span></p>
+        <p><strong>Search Params:</strong> <span id="search-params"></span></p>
+    </div>
+
+    <div class="info">
+        <h3>Authentication Status:</h3>
+        <p><strong>GitHub Token:</strong> <span id="github-token"></span></p>
+        <p><strong>Netlify Identity:</strong> <span id="netlify-identity"></span></p>
+    </div>
+
+    <div class="info">
+        <h3>Configuration Test:</h3>
+        <div id="config-test"></div>
+    </div>
+
+    <h3>Available Admin Pages:</h3>
+    <ul>
+        <li><a href="/admin/">Main Admin</a></li>
+        <li><a href="/admin/config.yml">Config File</a></li>
+        <li><a href="/admin/test.html">Test Page</a></li>
+        <li><a href="/admin/fallback.html">Fallback Page</a></li>
+        <li><a href="/admin/config-test.html">Config Test</a></li>
+    </ul>
+
+    <script>
+        // Display current URL information
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('hash').textContent = window.location.hash || 'none';
+        document.getElementById('search-params').textContent = window.location.search || 'none';
+
+        // Check for GitHub token in localStorage
+        const githubToken = localStorage.getItem('netlify-cms-user');
+        document.getElementById('github-token').textContent = githubToken ? 'Present' : 'Not found';
+
+        // Check Netlify Identity
+        const netlifyIdentity = localStorage.getItem('netlify-cms-user');
+        document.getElementById('netlify-identity').textContent = netlifyIdentity ? 'Present' : 'Not found';
+
+        // Test config file
+        fetch('/admin/config.yml')
+            .then(response => {
+                const configTest = document.getElementById('config-test');
+                if (response.ok) {
+                    configTest.innerHTML = '<div class="success">✅ Config file accessible (Status: ' + response.status + ')</div>';
+                } else {
+                    configTest.innerHTML = '<div class="error">❌ Config file not accessible (Status: ' + response.status + ')</div>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('config-test').innerHTML = '<div class="error">❌ Config file error: ' + error.message + '</div>';
+            });
+
+        // Log URL changes
+        window.addEventListener('hashchange', function () {
+            console.log('Hash changed to:', window.location.hash);
+        });
+
+        window.addEventListener('popstate', function () {
+            console.log('URL changed to:', window.location.href);
+        });
+    </script>
+</body>
+
+</html>

@@ -2,11 +2,17 @@ backend:
   name: github
   repo: alifiratuzun/abakus
   branch: main
-  auth_scope: repo
   client_id: Ov23lihHZUZkzBaIPcNr
+  auth_type: pkce
 
 media_folder: "img"
 public_folder: "/img"
+
+local_backend: false
+
+# Disable identity widget to prevent conflicts
+identity:
+  widget: false
 
 collections:
   - name: "projects"
@@ -17,14 +23,9 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Year", name: "year", widget: "number" }
-      - { label: "Place", name: "place", widget: "string" }
-      - { label: "Architect", name: "architect", widget: "string", required: false }
-      - { label: "Program", name: "program", widget: "string", required: false }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["house", "cultural", "commercial"] }
+      - { label: "Description", name: "body", widget: "text" }
       - { label: "Images", name: "images", widget: "list", required: false,
           field: { label: "Image", name: "image", widget: "image" }
         }
-      - { label: "Plans", name: "plans", widget: "list", required: false,
-          field: { label: "Plan", name: "plan", widget: "image" }
-        }
-
