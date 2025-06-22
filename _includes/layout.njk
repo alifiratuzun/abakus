@@ -2,17 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | Abakus</title>
+  <meta name="description" content="Portfolio for Abakus architectural studio.">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/img/favicon.png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abakus.studio/">
+  <meta property="og:title" content="{{ title }} | Abakus">
+  <meta property="og:description" content="Portfolio for Abakus architectural studio.">
+  <meta property="og:image" content="https://abakus.studio/img/casa-blanca-1.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://abakus.studio/">
+  <meta property="twitter:title" content="{{ title }} | Abakus">
+  <meta property="twitter:description" content="Portfolio for Abakus architectural studio.">
+  <meta property="twitter:image" content="https://abakus.studio/img/casa-blanca-1.jpg">
+  
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <header>
+  <header role="banner">
     <div class="logo-area">
-      <img src="/img/favicon.png" alt="Logo" class="logo">
+      <a href="/" aria-label="Abakus Homepage">
+        <img src="/img/favicon.png" alt="Logo" class="logo">
+      </a>
       <h1><a href="/">ABAKUS</a></h1>
     </div>
-    <nav>
+    <nav role="navigation" aria-label="Main Navigation">
       <input type="text" id="search" placeholder="Search projects...">
       <a href="/">All</a>
       <a href="#" data-filter="house">Houses</a>
@@ -26,5 +47,6 @@
   </header>
   {% block content %}{% endblock %}
   <script src="/js/filter.js"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </body>
 </html>

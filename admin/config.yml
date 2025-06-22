@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: alifiratuzun/abakus
+  name: git-gateway
   branch: main
-  client_id: Ov23lihHZUZkzBaIPcNr
-  auth_type: pkce
 
 media_folder: "img"
 public_folder: "/img"

@@ -1,13 +1,13 @@
 {
   "name": "abakus",
   "version": "1.0.0",
+  "description": "portfolio for abakus studio",
   "scripts": {
-    "start": "npx eleventy --serve"
+    "start": "eleventy --serve",
+    "build": "eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
-  },
-  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
     "netlify-cms": "^2.10.192"
   }
 }

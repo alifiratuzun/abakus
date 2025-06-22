@@ -1,20 +1,22 @@
 module.exports = function (eleventyConfig) {
+  // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("js");
+  eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("CNAME");
-  eleventyConfig.addPassthroughCopy("admin/config.yml");
-  eleventyConfig.addPassthroughCopy("node_modules/netlify-cms/dist");
 
+  // Create a custom collection for projects
   eleventyConfig.addCollection("project", function (collection) {
     return collection.getFilteredByGlob("projects/*.md");
   });
 
+  // Set custom directories
   return {
     dir: {
       input: ".",
       output: "_site",
-      includes: "_includes"
-    }
+      includes: "_includes",
+    },
   };
 };
