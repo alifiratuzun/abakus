@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netlify CMS Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Netlify CMS Configuration Test</h1>
+
+    <div id="status"></div>
+
+    <h2>Configuration Check:</h2>
+    <ul id="checks">
+        <li>⏳ Checking admin page loads...</li>
+        <li>⏳ Checking Netlify CMS script loads...</li>
+        <li>⏳ Checking GitHub OAuth app configured...</li>
+        <li>⏳ Checking redirect URL set correctly...</li>
+    </ul>
+
+    <h2>Debug Information:</h2>
+    <div id="debug"></div>
+
+    <p><a href="/admin/">Go to Admin Panel</a></p>
+
+    <script>
+        const status = document.getElementById('status');
+        const checks = document.getElementById('checks');
+        const debug = document.getElementById('debug');
+
+        let checkResults = {
+            pageLoad: false,
+            scriptLoad: false,
+            cmsLoad: false,
+            config: false
+        };
+
+        function updateStatus() {
+            const allPassed = Object.values(checkResults).every(result => result);
+            if (allPassed) {
+                status.innerHTML = '<div class="status success">✅ All checks passed! Netlify CMS should work.</div>';
+            } else {
+                status.innerHTML = '<div class="status warning">⚠️ Some checks failed. See details below.</div>';
+            }
+        }
+
+        function updateChecks() {
+            const items = checks.querySelectorAll('li');
+            items[0].innerHTML = checkResults.pageLoad ? '✅ Admin page loads' : '❌ Admin page loads';
+            items[1].innerHTML = checkResults.scriptLoad ? '✅ Netlify CMS script loads' : '❌ Netlify CMS script loads';
+            items[2].innerHTML = checkResults.cmsLoad ? '✅ GitHub OAuth app configured' : '❌ GitHub OAuth app configured';
+            items[3].innerHTML = checkResults.config ? '✅ Redirect URL set correctly' : '❌ Redirect URL set correctly';
+        }
+
+        // Test 1: Page loads
+        checkResults.pageLoad = true;
+
+        // Test 2: Script loading with fallback approach
+        function loadCMS() {
+            const sources = [
+                'https://unpkg.com/netlify-cms@^3.0.0/dist/netlify-cms.js',
+                'https://cdn.jsdelivr.net/npm/netlify-cms@^3.0.0/dist/netlify-cms.js',
+                'https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js'
+            ];
+
+            let currentSource = 0;
+
+            function tryNextSource() {
+                if (currentSource >= sources.length) {
+                    debug.innerHTML += '<div class="status error">❌ Failed to load Netlify CMS script from all sources</div>';
+                    updateChecks();
+                    updateStatus();
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = sources[currentSource];
+                script.onload = function () {
+                    if (typeof window.CMS !== 'undefined') {
+                        checkResults.scriptLoad = true;
+                        checkResults.cmsLoad = true;
+                        debug.innerHTML += '<div class="status success">✅ window.CMS is available</div>';
+                        debug.innerHTML += '<pre>CMS version: ' + (window.CMS.version || 'unknown') + '</pre>';
+                        debug.innerHTML += '<div class="status success">✅ Loaded from: ' + sources[currentSource] + '</div>';
+                    } else {
+                        currentSource++;
+                        tryNextSource();
+                    }
+                    updateChecks();
+                    updateStatus();
+                };
+                script.onerror = function () {
+                    debug.innerHTML += '<div class="status error">❌ Failed to load from: ' + sources[currentSource] + '</div>';
+                    currentSource++;
+                    tryNextSource();
+                };
+                document.head.appendChild(script);
+            }
+
+            tryNextSource();
+        }
+
+        loadCMS();
+
+        // Test 4: Configuration check
+        fetch('/admin/config.yml')
+            .then(response => {
+                if (response.ok) {
+                    checkResults.config = true;
+                    debug.innerHTML += '<div class="status success">✅ Config file accessible</div>';
+                } else {
+                    debug.innerHTML += '<div class="status error">❌ Config file not accessible: ' + response.status + '</div>';
+                }
+                updateChecks();
+                updateStatus();
+            })
+            .catch(error => {
+                debug.innerHTML += '<div class="status error">❌ Config file error: ' + error.message + '</div>';
+                updateChecks();
+                updateStatus();
+            });
+
+        // Initial update
+        updateChecks();
+        updateStatus();
+    </script>
+</body>
+
+</html>

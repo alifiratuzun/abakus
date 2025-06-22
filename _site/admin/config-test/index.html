@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Config Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Config File Test</h1>
+    <div id="result"></div>
+    <pre id="config-content"></pre>
+
+    <script>
+        const result = document.getElementById('result');
+        const configContent = document.getElementById('config-content');
+
+        // Test config file accessibility
+        fetch('/admin/config.yml')
+            .then(response => {
+                if (response.ok) {
+                    result.innerHTML = '<div class="success">✅ Config file is accessible (Status: ' + response.status + ')</div>';
+                    return response.text();
+                } else {
+                    result.innerHTML = '<div class="error">❌ Config file not accessible (Status: ' + response.status + ')</div>';
+                    throw new Error('Config file not found');
+                }
+            })
+            .then(text => {
+                configContent.textContent = text;
+            })
+            .catch(error => {
+                result.innerHTML = '<div class="error">❌ Error: ' + error.message + '</div>';
+            });
+    </script>
+</body>
+
+</html>

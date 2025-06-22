@@ -3,8 +3,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("CNAME");
-  eleventyConfig.addPassthroughCopy("_redirects");
-  eleventyConfig.addPassthroughCopy("admin/config.prod.yml");
+  eleventyConfig.addPassthroughCopy("admin/config.yml");
+  eleventyConfig.addPassthroughCopy("node_modules/netlify-cms/dist");
 
   eleventyConfig.addCollection("project", function (collection) {
     return collection.getFilteredByGlob("projects/*.md");

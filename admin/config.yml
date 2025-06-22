@@ -2,8 +2,8 @@ backend:
   name: github
   repo: alifiratuzun/abakus
   branch: main
-  auth_scope: repo
   client_id: Ov23lihHZUZkzBaIPcNr
+  auth_type: pkce
 
 media_folder: "img"
 public_folder: "/img"
