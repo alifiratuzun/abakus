@@ -3,4 +3,6 @@ layout: page.njk
 title: About
 ---
 
-Abakus is an independent archive of architecture projects curated for clarity and typological insight.
+Abakus is an independent archive of architecture.
+
+For inquiries: <a href="mailto:info@abakus.studio">info@abakus.studio</a>

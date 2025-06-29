@@ -18,10 +18,11 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "project.njk" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Location", name: "location", widget: "string" }
-      - { label: "Year", name: "year", widget: "number" }
-      - { label: "Types", name: "type", widget: "list", allow_add: true, summary: "{{fields.type}}" }
-      - { label: "Images", name: "images", widget: "list", required: false, field: { label: "Image", name: "image", widget: "image" } }
-      - { label: "Description", name: "body", widget: "text" }
+      - { label: "What (Type)", name: "what", widget: "string", required: true, hint: "e.g. Museum, Housing, Cultural, etc." }
+      - { label: "Who (Architect)", name: "who", widget: "string", required: true, hint: "e.g. Norman Foster, Zaha Hadid, etc." }
+      - { label: "Where (Location)", name: "where", widget: "string", required: true, hint: "e.g. Berlin, Istanbul, Porto, etc." }
+      - { label: "When (Year)", name: "when", widget: "string", required: true, hint: "e.g. 2022, 2023, 2024, etc." }
+      - { label: "Images", name: "images", widget: "list", required: false, hint: "Add image paths" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "project.njk" }

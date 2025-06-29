@@ -5,9 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} | Abakus</title>
   <meta name="description" content="Portfolio for Abakus architectural studio.">
+  <!-- Prevent FOUC: Set theme before CSS loads -->
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <!--  <link rel="icon" type="image/png" href="/img/favicon.png"> -->
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -29,23 +41,59 @@
   <header role="banner">
     <div class="logo-area">
       <a href="/" aria-label="Abakus Homepage">
-        <img src="/img/favicon.png" alt="Logo" class="logo">
+        <!--  <img src="/img/favicon.png" alt="Logo" class="logo"> -->
       </a>
       <h1><a href="/">ABAKUS</a></h1>
     </div>
-    <nav role="navigation" aria-label="Main Navigation">
-      <input type="text" id="search" placeholder="Search projects...">
-      <a href="/">All</a>
-      <a href="#" data-filter="house">Houses</a>
-      <a href="#" data-filter="cultural">Cultural</a>
-      <a href="#" data-filter="2022">2022</a>
-      <a href="#" data-filter="2023">2023</a>
-      <a href="#" data-filter="2024">2024</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+    <nav role="navigation" aria-label="Main Navigation" class="main-nav">
+      <button id="search-toggle" class="search-toggle nav-btn" aria-label="Show search">Search</button>
+      <input type="text" id="search" placeholder="Search projects..." autocomplete="off" style="display:none;">
+      <button id="filter-toggle" class="filter-toggle nav-btn" aria-haspopup="true" aria-expanded="false">Filter</button>
+      <div id="filter-w-row" class="filter-w-row" style="display:none;">
+        {% set allProjects = collections.projects %}
+        {% set whatList = allProjects | map(attribute='data.what') | unique | sort %}
+        {% set whoList = allProjects | map(attribute='data.who') | unique | sort %}
+        {% set whereList = allProjects | map(attribute='data.where') | unique | sort %}
+        {% set whenList = allProjects | map(attribute='data.when') | unique | sort %}
+        <div class="filter-w-item" tabindex="0">
+          <span>What</span>
+          <div class="filter-w-submenu">
+            {% for what in whatList %}
+              <button class="filter-submenu" data-filter-group="what" data-filter-value="{{ what | slug }}">{{ what }}</button>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="filter-w-item" tabindex="0">
+          <span>Who</span>
+          <div class="filter-w-submenu">
+            {% for who in whoList %}
+              <button class="filter-submenu" data-filter-group="who" data-filter-value="{{ who | slug }}">{{ who }}</button>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="filter-w-item" tabindex="0">
+          <span>Where</span>
+          <div class="filter-w-submenu">
+            {% for where in whereList %}
+              <button class="filter-submenu" data-filter-group="where" data-filter-value="{{ where | slug }}">{{ where }}</button>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="filter-w-item" tabindex="0">
+          <span>When</span>
+          <div class="filter-w-submenu">
+            {% for when in whenList %}
+              <button class="filter-submenu" data-filter-group="when" data-filter-value="{{ when | slug }}">{{ when }}</button>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <a href="/about" class="nav-btn">About</a>
+      <button id="theme-switch" aria-label="Toggle dark mode" class="theme-switch nav-btn"></button>
     </nav>
   </header>
   {% block content %}{% endblock %}
   <script src="/js/filter.js"></script>
+  <script src="/js/theme.js"></script>
 </body>
 </html>
