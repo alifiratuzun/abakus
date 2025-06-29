@@ -23,9 +23,7 @@ where: Istanbul, Türkiye
 layout: project.njk
 location: Ankara, Türkiye
 title: Gön Deri Fabrikasi - I
-images:
-  - /img/tcbh18390201.jpg
-  - /img/tcbpetd001003.jpg
+images: []
 type:
   - Religious
 when: "1992"
