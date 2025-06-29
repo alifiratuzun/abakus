@@ -1,12 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const projectGrid = document.querySelector('main.grid');
+
+  // Only run the script if the project grid exists on this page.
+  if (!projectGrid) {
+    return;
+  }
+
   const searchInput = document.getElementById('search');
   const filterLinks = document.querySelectorAll('nav a[data-filter]');
-  const allProjects = document.querySelectorAll('.thumb');
+  const allProjects = projectGrid.querySelectorAll('.thumb');
   const allLink = document.querySelector('nav a[href="/"]');
 
   function filterAndSearch() {
     const searchTerm = searchInput.value.toLowerCase();
-    const activeFilter = document.querySelector('nav a.active')?.dataset.filter;
+    const activeFilterLink = document.querySelector('nav a.active');
+    const activeFilter = activeFilterLink ? activeFilterLink.dataset.filter : null;
 
     allProjects.forEach(project => {
       const title = project.querySelector('h2').textContent.toLowerCase();
@@ -32,11 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
   filterLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-
-      // Toggle active class
       document.querySelector('nav a.active')?.classList.remove('active');
       link.classList.add('active');
-
       filterAndSearch();
     });
   });
