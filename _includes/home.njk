@@ -4,9 +4,13 @@
   <main class="grid">
     {% for project in collections.project %}
       <a class="thumb" href="{{ project.url }}" data-type="{{ project.data.type }}" data-year="{{ project.data.year }}">
-        <img src="{{ project.data.images[0] }}" alt="{{ project.data.title }}">
-        <h2>{{ project.data.title }}</h2>
-        <p>{{ project.data.location }} – {{ project.data.year }}</p>
+        <div class="thumb-img-wrapper">
+          <img src="{{ project.data.images[0] }}" alt="{{ project.data.title }}">
+        </div>
+        <div class="thumb-text">
+          <h2>{{ project.data.title }}</h2>
+          <p>{{ project.data.location }} – {{ project.data.year }}</p>
+        </div>
       </a>
     {% endfor %}
   </main>

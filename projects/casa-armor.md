@@ -1,4 +1,5 @@
 ---
+layout: project.njk
 title: Casa Armor
 year: 1999
 location: Sile
