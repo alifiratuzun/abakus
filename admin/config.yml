@@ -22,6 +22,6 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Location", name: "location", widget: "string" }
       - { label: "Year", name: "year", widget: "number" }
-      - { label: "Type", name: "type", widget: "select", options: ["house", "cultural", "commercial"] }
+      - { label: "Types", name: "type", widget: "list", allow_add: true, summary: "{{fields.type}}" }
       - { label: "Images", name: "images", widget: "list", required: false, field: { label: "Image", name: "image", widget: "image" } }
       - { label: "Description", name: "body", widget: "text" }
