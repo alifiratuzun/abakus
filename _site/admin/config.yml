@@ -18,11 +18,10 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "project.njk" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Year", name: "year", widget: "number" }
       - { label: "Location", name: "location", widget: "string" }
+      - { label: "Year", name: "year", widget: "number" }
       - { label: "Type", name: "type", widget: "select", options: ["house", "cultural", "commercial"] }
+      - { label: "Images", name: "images", widget: "list", required: false, field: { label: "Image", name: "image", widget: "image" } }
       - { label: "Description", name: "body", widget: "text" }
-      - { label: "Images", name: "images", widget: "list", required: false,
-          field: { label: "Image", name: "image", widget: "image" }
-        }
