@@ -13,7 +13,11 @@
         </div>
         <div class="thumb-text">
           <h2>{{ project.data.title }}</h2>
-          <p>{{ project.data.where }} – {{ project.data.when }}</p>
+          {% if project.data.who %}<div class="thumb-who">{{ project.data.who }}</div>{% endif %}
+          <p>
+            {{ project.data.where or project.data.location }}<br>
+            <span class="thumb-year">{{ project.data.when or project.data.year }}</span>
+          </p>
         </div>
       </a>
     {% endfor %}

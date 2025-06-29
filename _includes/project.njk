@@ -2,13 +2,27 @@
 
 {% block content %}
   <article class="project">
-    <h1>{{ title }}</h1>
-    <p><em>{{ location }}, {{ year }}</em></p>
-    {% for img in images %}
-      <img src="{{ img }}" alt="{{ title }}">
-    {% endfor %}
-    <div class="body">
-      {{ content | safe }}
+    {% block projectmeta %}
+      <div class="project-meta">
+        <h1>{{ title }}</h1>
+        <div class="project-meta-info">
+          {% if who %}<div class="project-meta-row"><span class="meta-label">Who:</span> {{ who }}</div>{% endif %}
+          {% if what %}<div class="project-meta-row"><span class="meta-label">What:</span> {{ what }}</div>{% endif %}
+          {% if where %}<div class="project-meta-row"><span class="meta-label">Where:</span> {{ where }}</div>{% endif %}
+          {% if when %}<div class="project-meta-row"><span class="meta-label">When:</span> {{ when }}</div>{% endif %}
+        </div>
+      </div>
+    {% endblock %}
+    <div class="project-main project-main-centered">
+      {% for img in images %}
+        <img src="{{ img }}" alt="{{ title }}">
+      {% endfor %}
+      <div class="body">
+        {{ content | safe }}
+      </div>
     </div>
   </article>
+  {% if footnote %}
+    <div class="project-footnote">{{ footnote | safe }}</div>
+  {% endif %}
 {% endblock %}

@@ -11,11 +11,10 @@ module.exports = function (eleventyConfig) {
     return [...new Set(arr)];
   });
 
-  // Add a map filter for arrays
+  // Add a map filter for arrays (supports dot notation)
   eleventyConfig.addFilter("map", function (arr, prop) {
     if (!Array.isArray(arr)) return [];
     if (!prop) return arr;
-    // Support dot notation (e.g., 'data.what')
     return arr.map(item => {
       if (typeof item !== "object" || item === null) return undefined;
       return prop.split('.').reduce((acc, key) => acc && acc[key], item);
