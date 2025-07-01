@@ -10,17 +10,18 @@
     .nc-app,
     .nc-mainContent,
     .nc-collectionPage-content,
-    .nc-collectionPage {
-      overflow: visible !important;
+    .nc-collectionPage,
+    .nc-entryEditor-toolbar {
+      overflow: visible;
     }
 
     .nc-widgetDropdown-list,
     .nc-dropdown-list {
-      min-width: 220px !important;
-      max-width: 600px !important;
-      white-space: normal !important;
-      overflow: visible !important;
-      z-index: 9999 !important;
+      min-width: 220px;
+      max-width: 600px;
+      white-space: normal;
+      overflow: visible;
+      z-index: 9999;
     }
 
     .nc-dropdown-list {
@@ -30,14 +31,9 @@
 
     .nc-dropdown-list li,
     .nc-widgetDropdown-list li {
-      white-space: normal !important;
+      white-space: normal;
     }
   </style>
-</head>
-
-<body>
-  <div id="nc-root"></div>
-  <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', function (user) {
@@ -54,7 +50,27 @@
         }
       });
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new MutationObserver(() => {
+        // Check if the publish confirmation modal is gone
+        const modal = document.querySelector('.nc-modal-root');
+        if (!modal) {
+          setTimeout(() => {
+            if (window.location.pathname !== '/admin/') {
+              window.location.href = '/admin/';
+            }
+          }, 500);
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
   </script>
+</head>
+
+<body>
+  <div id="nc-root"></div>
+  <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
 </body>
 
 </html>
