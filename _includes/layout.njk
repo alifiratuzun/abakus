@@ -59,7 +59,9 @@
           <span>What</span>
           <div class="filter-w-submenu">
             {% for what in whatList %}
-              <button class="filter-submenu" data-filter-group="what" data-filter-value="{{ what | slug }}">{{ what }}</button>
+              {% if what is string %}
+                <button class="filter-submenu" data-filter-group="what" data-filter-value="{{ what | slug }}">{{ what }}</button>
+              {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -67,7 +69,9 @@
           <span>Who</span>
           <div class="filter-w-submenu">
             {% for who in whoList %}
-              <button class="filter-submenu" data-filter-group="who" data-filter-value="{{ who | slug }}">{{ who }}</button>
+              {% if who is string %}
+                <button class="filter-submenu" data-filter-group="who" data-filter-value="{{ who | slug }}">{{ who }}</button>
+              {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -75,7 +79,9 @@
           <span>Where</span>
           <div class="filter-w-submenu">
             {% for where in whereList %}
-              <button class="filter-submenu" data-filter-group="where" data-filter-value="{{ where | slug }}">{{ where }}</button>
+              {% if where is string %}
+                <button class="filter-submenu" data-filter-group="where" data-filter-value="{{ where | slug }}">{{ where }}</button>
+              {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -83,7 +89,9 @@
           <span>When</span>
           <div class="filter-w-submenu">
             {% for when in whenList %}
-              <button class="filter-submenu" data-filter-group="when" data-filter-value="{{ when | slug }}">{{ when }}</button>
+              {% if when is string %}
+                <button class="filter-submenu" data-filter-group="when" data-filter-value="{{ when | slug }}">{{ when }}</button>
+              {% endif %}
             {% endfor %}
           </div>
         </div>
