@@ -6,11 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    .nc-app,
+    .nc-mainContent,
+    .nc-collectionPage-content,
+    .nc-collectionPage {
+      overflow: visible !important;
+    }
+
+    .nc-widgetDropdown-list,
+    .nc-dropdown-list {
+      min-width: 220px !important;
+      max-width: 600px !important;
+      white-space: normal !important;
+      overflow: visible !important;
+      z-index: 9999 !important;
+    }
+
+    .nc-dropdown-list {
+      width: auto !important;
+      max-width: 400px !important;
+    }
+
+    .nc-dropdown-list li,
+    .nc-widgetDropdown-list li {
+      white-space: normal !important;
+    }
+  </style>
 </head>
 
 <body>
   <div id="nc-root"></div>
   <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', function (user) {
+        if (user) {
+          document.addEventListener('click', function (e) {
+            // Listen for publish button click
+            if (e.target && e.target.closest('.nc-entryEditor-toolbarPublish')) {
+              // Wait for publish to complete, then redirect
+              setTimeout(function () {
+                window.location.href = '/admin/';
+              }, 2000); // Adjust delay as needed
+            }
+          });
+        }
+      });
+    }
+  </script>
 </body>
 
 </html>

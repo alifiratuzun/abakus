@@ -23,7 +23,15 @@ collections:
       - { label: "Who (Architect)", name: "who", widget: "string", required: true, hint: "e.g. Mimar Sinan" }
       - { label: "Where (Location)", name: "where", widget: "string", required: true, hint: "e.g. Istanbul" }
       - { label: "When (Year)", name: "when", widget: "string", required: true, hint: "e.g. 2022" }
-      - { label: "Images", name: "images", widget: "list", required: false, hint: "Add image paths" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        field:
+          label: Image
+          name: image
+          widget: image
+          required: false
+      - { label: "Order", name: "order", widget: "number", required: false, hint: "Set this to control project order (lower = first)" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Footnote", name: "footnote", widget: "markdown", required: false, hint: "Add sources or credits for images/texts. This will appear as a small footnote at the bottom of the project page." }
       - { label: "Layout", name: "layout", widget: "hidden", default: "project.njk" }
