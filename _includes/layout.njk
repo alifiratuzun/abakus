@@ -51,10 +51,10 @@
       <button id="filter-toggle" class="filter-toggle nav-btn" aria-haspopup="true" aria-expanded="false">Filter</button>
       <div id="filter-w-row" class="filter-w-row" style="display:none;">
         {% set allProjects = collections.project %}
-        {% set whatList = allProjects | map('data.what') | unique | sort %}
-        {% set whoList = allProjects | map('data.who') | unique | sort %}
-        {% set whereList = allProjects | map('data.where') | unique | sort %}
-        {% set whenList = allProjects | map('data.when') | unique | sort %}
+        {% set whatList = allProjects | map('data.what') | sort | unique %}
+        {% set whoList = allProjects | map('data.who') | sort | unique %}
+        {% set whereList = allProjects | map('data.where') | sort | unique %}
+        {% set whenList = allProjects | map('data.when') | sort | unique %}
         <div class="filter-w-item" tabindex="0">
           <span>What</span>
           <div class="filter-w-submenu">
