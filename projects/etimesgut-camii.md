@@ -1,7 +1,7 @@
 ---
 title: Etimesgut Camii
 what: Religious
-who: Cengiz Bektas
+who: Cengiz Bektaş
 where: Ankara, Türkiye
 when: "1965"
 images:
