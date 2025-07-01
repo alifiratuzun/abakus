@@ -4,7 +4,9 @@ what: Industrial
 who: Nevzat Sayın
 where: Istanbul, Türkiye
 when: "1992"
-images: []
+images:
+  - /img/web_nsmh_gon1_3.jpg
+  - /img/gon1.jpg
 footnote: >-
   \[1] Etimesgut Cami-Cengiz Bektaş. (2008). Erişim adresi:
   https://www.mimarizm.com/makale/etimesgut-cami-cengiz-bektas_113496 Erişim
