@@ -15,7 +15,10 @@
     {% endblock %}
     <div class="project-main project-main-centered">
       {% for img in images %}
-        <img src="{{ img }}" alt="{{ title }}">
+        <img src="{{ img.image }}" alt="{{ img.alt | default(title) }}">
+        {% if img.alt %}
+          <div class="image-alt-text">{{ img.alt }}</div>
+        {% endif %}
       {% endfor %}
       <div class="body">
         {{ content | safe }}

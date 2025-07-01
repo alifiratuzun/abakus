@@ -26,11 +26,9 @@ collections:
       - label: "Images"
         name: "images"
         widget: "list"
-        field:
-          label: Image
-          name: image
-          widget: image
-          required: false
+        fields:
+          - { label: "Image", name: "image", widget: "image", required: true }
+          - { label: "Alt Text", name: "alt", widget: "string", required: false, hint: "Describe the image for accessibility" }
       - { label: "Order", name: "order", widget: "number", required: false, hint: "Set this to control project order (lower = first)" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Footnote", name: "footnote", widget: "markdown", required: false, hint: "Add sources or credits for images/texts. This will appear as a small footnote at the bottom of the project page." }

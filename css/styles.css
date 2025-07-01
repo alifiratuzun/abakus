@@ -522,3 +522,10 @@ a:active {
 .project-meta-row {
   white-space: nowrap;
 }
+
+.image-alt-text {
+  font-size: 0.85em;
+  color: var(--color-text-secondary);
+  margin-bottom: 1em;
+  text-align: left;
+}
