@@ -195,7 +195,7 @@ header {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  min-width: 140px;
+  min-width: 220px;
   background: var(--color-bg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
@@ -217,6 +217,7 @@ header {
   padding: 0.5em 1.2em;
   cursor: pointer;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .filter-w-submenu .filter-submenu:hover,
