@@ -14,11 +14,11 @@ module.exports = function (eleventyConfig) {
   // Add a map filter for arrays (supports dot notation)
   eleventyConfig.addFilter("map", function (arr, prop) {
     if (!Array.isArray(arr)) return [];
-    if (!prop) return arr;
+    if (!prop || typeof prop !== 'string') return arr;
     return arr.map(item => {
       if (typeof item !== "object" || item === null) return undefined;
       return prop.split('.').reduce((acc, key) => acc && acc[key], item);
-    });
+    }).filter(item => item !== undefined);
   });
 
   // Create a custom collection for projects
