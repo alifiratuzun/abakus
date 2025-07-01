@@ -5,8 +5,8 @@ who: Cengiz Bektaş
 where: Ankara, Türkiye
 when: "1965"
 images:
-  - img/tcbh18390201.jpg
-  - img/tcbpetd001003.jpg
+  - /img/tcbh18390201.jpg
+  - /img/tcbpetd001003.jpg
   - /img/resized_e2b92-2396241015.jpg
   - /img/resized_27c62-459f36684.jpg
   - /img/tcbh18390205.jpg
