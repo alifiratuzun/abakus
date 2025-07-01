@@ -7,6 +7,7 @@ when: "1965"
 images:
   - /img/tcbh18390201.jpg
   - /img/tcbpetd001003.jpg
+  - /img/resized_27c62-459f36684.jpg
 footnote: >-
   \[1] Etimesgut Cami-Cengiz Bektaş. (2008). Erişim adresi:
   https://www.mimarizm.com/makale/etimesgut-cami-cengiz-bektas_113496 Erişim
