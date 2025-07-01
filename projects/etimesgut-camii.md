@@ -4,6 +4,8 @@ what: Religious
 who: Cengiz Bektas
 where: Ankara, Türkiye
 when: "1965"
+images:
+  - img/tcbh18390201.jpg
 footnote: >-
   \[1] Etimesgut Cami-Cengiz Bektaş. (2008). Erişim adresi:
   https://www.mimarizm.com/makale/etimesgut-cami-cengiz-bektas_113496 Erişim
