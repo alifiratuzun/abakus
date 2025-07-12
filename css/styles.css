@@ -636,7 +636,7 @@ a:active {
 }
 
 .aligned-meta .meta-label {
-  min-width: 6.5em;
+  min-width: 4.2em;
   display: inline-block;
   text-align: left;
 }
