@@ -19,9 +19,9 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Proje Adı", name: "title", widget: "string" }
-      - { label: "Tür", name: "Tur", widget: "string", required: true, hint: "Türü (ör: Dini, Endüstriyel, Eğitim)" }
       - { label: "Mimar", name: "Mimar", widget: "string", required: true, hint: "Mimar(lar)" }
       - { label: "Yer", name: "Yer", widget: "string", required: true, hint: "Yer (ör: Ankara, Türkiye)" }
+      - { label: "Tür", name: "Tur", widget: "string", required: true, hint: "Türü (ör: Dini, Endüstriyel, Eğitim)" }
       - { label: "Tarih", name: "Tarih", widget: "string", required: true, hint: "Yıl (ör: 2022)" }
       - label: "Görseller"
         name: "images"
