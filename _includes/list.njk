@@ -5,6 +5,7 @@
   <table class="project-list-table">
     <thead>
       <tr>
+        <th data-sort="title">Proje</th>
         <th data-sort="mimar">Mimar</th>
         <th data-sort="yer">Yer</th>
         <th data-sort="tur">Tür</th>
@@ -14,6 +15,7 @@
     <tbody id="project-list-body">
       {% for project in collections.project | reverse %}
       <tr class="project-row" data-href="{{ project.url }}">
+        <td>{{ project.data.title }}</td>
         <td>{{ project.data.mimar }}</td>
         <td>{{ project.data.yer.split(',')[0] }}</td>
         <td>{{ project.data.tur }}</td>
