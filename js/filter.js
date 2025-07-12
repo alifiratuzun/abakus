@@ -100,7 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       let match = false;
       if (group === 'tur') match = tur === value;
-      if (group === 'mimar') match = mimar === value;
+      if (group === 'mimar') {
+        // Split architects, slugify each, and compare to value
+        match = mimar.split(',').map(s => s.trim().replace(/ı/g, 'i').replace(/ü/g, 'u').replace(/ö/g, 'o').replace(/ş/g, 's').replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/\s+/g, '-').toLowerCase()).includes(value);
+      }
       if (group === 'yer') match = yer === value;
       if (group === 'tarih') match = tarih === value;
       project.style.display = match ? 'block' : 'none';
