@@ -6,6 +6,9 @@ where: İstanbul, Türkiye
 when: "1992"
 footnote: |
   [1] https://www.nsmh.com/Gon-Deri-Fabrikasi-I
+Ne: Endüstriyel
+Kim: Nevzat Sayın
+Nerede: Istanbul, Türkiye
 Ne Zaman: "1992"
 images:
   - image: /img/web_nsmh_gon1_3.jpg

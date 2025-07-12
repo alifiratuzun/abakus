@@ -27,6 +27,9 @@ footnote: >
   <br>
 
   [6] Erişim adresi: www.mimdap.org, Erişim Tarihi: 30.01.2021
+Ne: Dini
+Kim: Cengiz Bektaş
+Nerede: Ankara, Türkiye
 Ne Zaman: "1965"
 when: "1964"
 layout: project.njk

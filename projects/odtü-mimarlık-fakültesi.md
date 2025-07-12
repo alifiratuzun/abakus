@@ -12,7 +12,7 @@ footnote: >
   <br>
 
   [2] Arkitekt, Cilt: 1965 Sayı: 1965-03 (320) Sayfa: 108-109, 114.
-Ne Zaman: "1963"
+Ne: Eğitim
 when: "1963"
 layout: project.njk
 nerede: Ankara, Türkiye
