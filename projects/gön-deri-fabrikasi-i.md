@@ -7,7 +7,8 @@ when: "1992"
 images:
   - image: /img/web_nsmh_gon1_3.jpg
   - image: /img/gon1.jpg
-footnote: \[1] https://www.nsmh.com/Gon-Deri-Fabrikasi-I
+footnote: |
+  [1] https://www.nsmh.com/Gon-Deri-Fabrikasi-I
 layout: project.njk
 location: Ankara, Türkiye
 type:
