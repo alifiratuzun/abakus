@@ -5,11 +5,11 @@
     {% block projectmeta %}
       <div class="project-meta">
         <h1>{{ title }}</h1>
-        <div class="project-meta-info">
-          {% if Ne %}<div class="project-meta-row"><span class="meta-label">Ne:</span> {{ Ne }}</div>{% endif %}
-          {% if Kim %}<div class="project-meta-row"><span class="meta-label">Kim:</span> {{ Kim }}</div>{% endif %}
-          {% if Nerede %}<div class="project-meta-row"><span class="meta-label">Nerede:</span> {{ Nerede }}</div>{% endif %}
-          {% if attribute(_context, 'Ne Zaman') %}<div class="project-meta-row"><span class="meta-label">Ne Zaman:</span> {{ attribute(_context, 'Ne Zaman') }}</div>{% endif %}
+        <div class="project-meta-info aligned-meta">
+          {% if mimar %}<div class="project-meta-row"><span class="meta-label">Mimar:</span> <span class="meta-value">{{ mimar }}</span></div>{% endif %}
+          {% if yer %}<div class="project-meta-row"><span class="meta-label">Yer:</span> <span class="meta-value">{{ yer }}</span></div>{% endif %}
+          {% if tur %}<div class="project-meta-row"><span class="meta-label">Tür:</span> <span class="meta-value">{{ tur }}</span></div>{% endif %}
+          {% if tarih %}<div class="project-meta-row"><span class="meta-label">Tarih:</span> <span class="meta-value">{{ tarih }}</span></div>{% endif %}
         </div>
       </div>
     {% endblock %}

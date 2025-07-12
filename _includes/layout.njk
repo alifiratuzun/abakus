@@ -57,47 +57,46 @@
       <button id="filter-toggle" class="filter-toggle nav-btn" aria-haspopup="true" aria-expanded="false">Seç</button>
       <div id="filter-w-row" class="filter-w-row" style="display:none;">
         {% set allProjects = collections.project %}
-        {% set whatList = allProjects | map('data.what') | sort | unique %}
-        {% set whoList = allProjects | map('data.who') | sort | unique %}
-        {% set whereList = allProjects | map('data.where') | sort | unique %}
-        {% set whenList = allProjects | map('data.when') | sort | unique %}
+        {% set turList = allProjects | map('data.tur') | sort | unique %}
+        {% set mimarList = allProjects | map('data.mimar') | sort | unique %}
+        {% set yerList = allProjects | map('data.yer') | sort | unique %}
+        {% set tarihList = allProjects | map('data.tarih') | sort | unique %}
+        {% set decadeGroups = tarihList | groupByDecade %}
         <div class="filter-w-item" tabindex="0">
-          <span>Ne</span>
+          <span>Mimar</span>
           <div class="filter-w-submenu">
-            {% for what in whatList %}
-              {% if what is string %}
-                <button class="filter-submenu" data-filter-group="what" data-filter-value="{{ what | slug }}">{{ what }}</button>
+            {% for mimar in mimarList %}
+              {% if mimar is string %}
+                <button class="filter-submenu" data-filter-group="mimar" data-filter-value="{{ mimar | slug }}">{{ mimar }}</button>
               {% endif %}
             {% endfor %}
           </div>
         </div>
         <div class="filter-w-item" tabindex="0">
-          <span>Kim</span>
+          <span>Yer</span>
           <div class="filter-w-submenu">
-            {% for who in whoList %}
-              {% if who is string %}
-                <button class="filter-submenu" data-filter-group="who" data-filter-value="{{ who | slug }}">{{ who }}</button>
+            {% for yer in yerList %}
+              {% if yer is string %}
+                <button class="filter-submenu" data-filter-group="yer" data-filter-value="{{ yer.split(',')[0] | slug }}">{{ yer.split(',')[0] }}</button>
               {% endif %}
             {% endfor %}
           </div>
         </div>
         <div class="filter-w-item" tabindex="0">
-          <span>Nerede</span>
+          <span>Tür</span>
           <div class="filter-w-submenu">
-            {% for where in whereList %}
-              {% if where is string %}
-                <button class="filter-submenu" data-filter-group="where" data-filter-value="{{ where | slug }}">{{ where }}</button>
+            {% for tur in turList %}
+              {% if tur is string %}
+                <button class="filter-submenu" data-filter-group="tur" data-filter-value="{{ tur | slug }}">{{ tur }}</button>
               {% endif %}
             {% endfor %}
           </div>
         </div>
         <div class="filter-w-item" tabindex="0">
-          <span>Ne zaman</span>
+          <span>Tarih</span>
           <div class="filter-w-submenu">
-            {% for when in whenList %}
-              {% if when is string %}
-                <button class="filter-submenu" data-filter-group="when" data-filter-value="{{ when | slug }}">{{ when }}</button>
-              {% endif %}
+            {% for group in decadeGroups %}
+              <button class="filter-submenu" data-filter-group="tarih" data-filter-value="{{ group.decade | slug }}">{{ group.decade }}</button>
             {% endfor %}
           </div>
         </div>

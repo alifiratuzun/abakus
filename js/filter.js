@@ -86,15 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Filtering logic for dynamic filter buttons
   function filterProjects(group, value) {
     allProjects.forEach(project => {
-      const what = (project.dataset.what || '').toLowerCase();
-      const who = (project.dataset.who || '').toLowerCase();
-      const where = (project.dataset.where || '').toLowerCase();
-      const when = (project.dataset.when || '').toLowerCase();
+      const tur = (project.dataset.tur || '').toLowerCase();
+      const mimar = (project.dataset.mimar || '').toLowerCase();
+      const yer = (project.dataset.yer || '').toLowerCase();
+      let tarih = (project.dataset.tarih || '').toLowerCase();
+      // If filtering by decade, derive the decade from the year if needed
+      if (group === 'tarih' && tarih.length === 4 && !tarih.includes("'lar")) {
+        tarih = tarih.slice(0, 3) + "0'lar";
+      }
+      // Slugify for comparison
+      function slugify(str) {
+        return str.replace(/['’]/g, '').replace(/\s+/g, '-').toLowerCase();
+      }
       let match = false;
-      if (group === 'what') match = what === value;
-      if (group === 'who') match = who === value;
-      if (group === 'where') match = where === value;
-      if (group === 'when') match = when === value;
+      if (group === 'tur') match = tur === value;
+      if (group === 'mimar') match = mimar === value;
+      if (group === 'yer') match = yer === value;
+      if (group === 'tarih') match = tarih === value;
       project.style.display = match ? 'block' : 'none';
     });
   }
@@ -126,12 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const query = this.value.trim().toLowerCase();
       allProjects.forEach(project => {
         const title = (project.querySelector('h2')?.innerText || '').toLowerCase();
-        const who = (project.querySelector('.thumb-who')?.innerText || '').toLowerCase();
-        const where = (project.querySelector('p')?.innerText || '').toLowerCase();
+        const mimar = (project.querySelector('.thumb-who')?.innerText || '').toLowerCase();
+        const yer = (project.querySelector('p')?.innerText || '').toLowerCase();
         if (
           title.includes(query) ||
-          who.includes(query) ||
-          where.includes(query)
+          mimar.includes(query) ||
+          yer.includes(query)
         ) {
           project.style.display = 'block';
         } else {

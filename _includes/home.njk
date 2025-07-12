@@ -4,19 +4,19 @@
   <main class="grid">
     {% for project in collections.project %}
       <a class="thumb" href="{{ project.url }}"
-         data-what="{{ project.data.what | slug }}"
-         data-who="{{ project.data.who | slug }}"
-         data-where="{{ project.data.where | slug }}"
-         data-when="{{ project.data.when | slug }}">
+         data-tur="{{ project.data.tur | slug }}"
+         data-mimar="{{ project.data.mimar | slug }}"
+         data-yer="{{ project.data.yer | slug }}"
+         data-tarih="{{ project.data.tarih | truncate(3, false, '') ~ "0'lar" }}">
         <div class="thumb-img-wrapper">
           <img src="{{ project.data.images[0].image }}" alt="{{ project.data.images[0].alt or project.data.title }}">
         </div>
         <div class="thumb-text">
           <h2>{{ project.data.title }}</h2>
-          {% if project.data.Kim %}<div class="thumb-who">{{ project.data.Kim }}</div>{% endif %}
+          {% if project.data.mimar %}<div class="thumb-who">{{ project.data.mimar }}</div>{% endif %}
           <p>
-            {{ project.data.Nerede or project.data.location }}<br>
-            <span class="thumb-year">{{ project.data['Ne Zaman'] or project.data.year }}</span>
+            {{ project.data.yer.split(',')[0] }}<br>
+            <span class="thumb-year">{{ project.data.tarih }}</span>
           </p>
         </div>
       </a>
