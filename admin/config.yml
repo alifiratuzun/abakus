@@ -13,17 +13,17 @@ identity:
 
 collections:
   - name: "projects"
-    label: "Projects"
+    label: "Projeler"
     folder: "projects"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Ne (Tip)", name: "what", widget: "string", required: true, hint: "e.g. Konut" }
-      - { label: "Kim (Mimar)", name: "who", widget: "string", required: true, hint: "e.g. Mimar Sinan" }
-      - { label: "Nerede (Yer)", name: "where", widget: "string", required: true, hint: "e.g. Istanbul" }
-      - { label: "Ne Zaman (Tarih)", name: "when", widget: "string", required: true, hint: "e.g. 1997" }
-      - label: "Images"
+      - { label: "Proje Adı", name: "title", widget: "string" }
+      - { label: "Ne", name: "Ne", widget: "string", required: true, hint: "Türü (ör: Dini, Endüstriyel, Eğitim)" }
+      - { label: "Kim", name: "Kim", widget: "string", required: true, hint: "Mimar(lar)" }
+      - { label: "Nerede", name: "Nerede", widget: "string", required: true, hint: "Yer (ör: Ankara, Türkiye)" }
+      - { label: "Ne Zaman", name: "Ne Zaman", widget: "string", required: true, hint: "Yıl (ör: 2022)" }
+      - label: "Görseller"
         name: "images"
         widget: "list"
         required: true
@@ -31,9 +31,8 @@ collections:
           - image: "/img/placeholder.jpg"
             alt: "Placeholder image"
         fields:
-          - { label: "Image", name: "image", widget: "image", required: true }
-          - { label: "Alt Text", name: "alt", widget: "string", required: false, hint: "Describe the image for accessibility" }
-      - { label: "Order", name: "order", widget: "number", required: false, hint: "Set this to control project order (lower = first)" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Footnote", name: "footnote", widget: "markdown", required: false, hint: "Add sources or credits for images/texts. This will appear as a small footnote at the bottom of the project page." }
+          - { label: "Görsel", name: "image", widget: "image", required: true }
+          - { label: "Alt Metin", name: "alt", widget: "string", required: false, hint: "Erişilebilirlik için görsel açıklaması" }
+      - { label: "Açıklama", name: "body", widget: "markdown" }
+      - { label: "Dipnot", name: "footnote", widget: "markdown", required: false, hint: "Kaynaklar veya ek bilgiler. Her satır yeni bir referans." }
       - { label: "Layout", name: "layout", widget: "hidden", default: "project.njk" }
