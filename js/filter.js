@@ -119,5 +119,26 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Live search for homepage projects
+  if (searchInput && projectGrid) {
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim().toLowerCase();
+      allProjects.forEach(project => {
+        const title = (project.querySelector('h2')?.innerText || '').toLowerCase();
+        const who = (project.querySelector('.thumb-who')?.innerText || '').toLowerCase();
+        const where = (project.querySelector('p')?.innerText || '').toLowerCase();
+        if (
+          title.includes(query) ||
+          who.includes(query) ||
+          where.includes(query)
+        ) {
+          project.style.display = 'block';
+        } else {
+          project.style.display = 'none';
+        }
+      });
+    });
+  }
 });
 
