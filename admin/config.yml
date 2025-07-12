@@ -19,10 +19,10 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "What (Type)", name: "what", widget: "string", required: true, hint: "e.g. Housing" }
-      - { label: "Who (Architect)", name: "who", widget: "string", required: true, hint: "e.g. Mimar Sinan" }
-      - { label: "Where (Location)", name: "where", widget: "string", required: true, hint: "e.g. Istanbul" }
-      - { label: "When (Year)", name: "when", widget: "string", required: true, hint: "e.g. 2022" }
+      - { label: "Ne (Tip)", name: "what", widget: "string", required: true, hint: "e.g. Konut" }
+      - { label: "Kim (Mimar)", name: "who", widget: "string", required: true, hint: "e.g. Mimar Sinan" }
+      - { label: "Nerede (Yer)", name: "where", widget: "string", required: true, hint: "e.g. Istanbul" }
+      - { label: "Ne Zaman (Tarih)", name: "when", widget: "string", required: true, hint: "e.g. 1997" }
       - label: "Images"
         name: "images"
         widget: "list"
