@@ -629,6 +629,24 @@ a:active {
   text-align: center;
 }
 
+.aligned-meta .project-meta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.aligned-meta .meta-label {
+  min-width: 6.5em;
+  display: inline-block;
+  text-align: left;
+}
+
+.aligned-meta .meta-value {
+  flex: 1;
+  display: inline-block;
+  text-align: left;
+}
+
 @media (max-width: 600px) {
   header {
     flex-direction: column;
