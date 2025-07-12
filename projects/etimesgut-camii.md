@@ -1,6 +1,6 @@
 ---
 title: Etimesgut Camii
-what: Religious
+what: Dini
 who: Cengiz Bektaş
 where: Ankara, Türkiye
 when: "1965"
