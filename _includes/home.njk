@@ -5,7 +5,7 @@
     {% for project in collections.project %}
       <a class="thumb" href="{{ project.url }}"
          data-tur="{{ project.data.tur | slug }}"
-         data-mimar="{{ project.data.mimar | slug }}"
+         data-mimar="{{ project.data.mimar }}"
          data-yer="{{ project.data.yer | slug }}"
          data-tarih="{{ project.data.tarih | truncate(3, false, '') ~ "0'lar" }}">
         <div class="thumb-img-wrapper">
