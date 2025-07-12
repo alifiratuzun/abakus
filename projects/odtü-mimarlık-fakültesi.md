@@ -1,9 +1,9 @@
 ---
 title: ODTÜ Mimarlık Fakültesi
-what: Eğitim
-who: Behruz Çinici, Altuğ Çinici
-where: Ankara, Türkiye
-when: "1963"
+ne: Eğitim
+kim: Behruz Çinici, Altuğ Çinici
+nerede: Ankara, Türkiye
+Ne Zaman: "1963"
 images:
   - image: /img/8-mim4.jpg.jpeg
   - image: /img/metu-_faculty_of_architecture_-14663256957-.jpg

@@ -1,9 +1,9 @@
 ---
 title: Etimesgut Camii
-what: Dini
-who: Cengiz Bektaş
-where: Ankara, Türkiye
-when: "1965"
+Ne: Dini
+Kim: Cengiz Bektaş
+Nerede: Ankara, Türkiye
+Ne Zaman: "1965"
 images:
   - image: /img/tcbh18390201.jpg
     alt: ""
