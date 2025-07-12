@@ -1,8 +1,8 @@
 ---
 title: Gön Deri Fabrikası - I
-what: Industrial
+what: Endüstriyel
 who: Nevzat Sayın
-where: Istanbul, Türkiye
+where: İstanbul, Türkiye
 when: "1992"
 images:
   - image: /img/web_nsmh_gon1_3.jpg
