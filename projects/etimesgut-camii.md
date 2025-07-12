@@ -1,9 +1,9 @@
 ---
 title: Etimesgut Camii
-Ne: Dini
-Kim: Cengiz Bektaş
-Nerede: Ankara, Türkiye
-Ne Zaman: "1965"
+Tur: Dini
+Mimar: Cengiz Bektaş
+Yer: Ankara, Türkiye
+Tarih: "1965"
 images:
   - image: /img/tcbh18390201.jpg
     alt: ""
