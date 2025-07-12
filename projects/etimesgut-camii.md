@@ -5,9 +5,12 @@ who: Cengiz Bektaş
 where: Ankara, Türkiye
 when: "1965"
 images:
-  - /img/tcbh18390201.jpg
-  - /img/tcbpetd001003.jpg
-  - /img/resized_27c62-459f36684.jpg
+  - image: /img/tcbh18390201.jpg
+    alt: ""
+  - image: /img/tcbpetd001003.jpg
+    alt: ""
+  - image: /img/resized_27c62-459f36684.jpg
+    alt: ""
 footnote: >-
   \[1] Etimesgut Cami-Cengiz Bektaş. (2008). Erişim adresi:
   https://www.mimarizm.com/makale/etimesgut-cami-cengiz-bektas_113496 Erişim

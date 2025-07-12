@@ -5,8 +5,10 @@ who: Nevzat Sayın
 where: Istanbul, Türkiye
 when: "1992"
 images:
-  - /img/web_nsmh_gon1_3.jpg
-  - /img/gon1.jpg
+  - image: /img/web_nsmh_gon1_3.jpg
+    alt: ""
+  - image: /img/gon1.jpg
+    alt: ""
 footnote: \[1] https://www.nsmh.com/Gon-Deri-Fabrikasi-I
 layout: project.njk
 location: Ankara, Türkiye

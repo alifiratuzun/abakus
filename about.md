@@ -1,8 +1,7 @@
 ---
-layout: page.njk
-title: About
+layout: about.njk
 ---
 
-Abakus is an independent archive of architecture.
+Abaküs bağımsız bir mimari araştırma arşividir.
 
-For inquiries: <a href="mailto:info@abakus.studio">info@abakus.studio</a>
+<a href="mailto:info@abakus.studio">info@abakus.studio</a>

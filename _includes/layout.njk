@@ -40,15 +40,21 @@
 <body>
   <header role="banner">
     <div class="logo-area">
-      <a href="/" aria-label="Abakus Homepage">
-        <!--  <img src="/img/favicon.png" alt="Logo" class="logo"> -->
-      </a>
-      <h1><a href="/">ABAKUS</a></h1>
+      <div class="logo-stack">
+        <a href="/" aria-label="Abakus Homepage" class="logo-link">
+          <div class="logo-line-segments">
+            <span class="logo-line logo-line-abak"></span>
+            <span class="logo-line logo-line-u"></span>
+            <span class="logo-line logo-line-s"></span>
+          </div>
+          <span class="logo-text">ABAKUS</span>
+        </a>
+      </div>
     </div>
     <nav role="navigation" aria-label="Main Navigation" class="main-nav">
-      <button id="search-toggle" class="search-toggle nav-btn" aria-label="Show search">Search</button>
-      <input type="text" id="search" placeholder="Search projects..." autocomplete="off" style="display:none;">
-      <button id="filter-toggle" class="filter-toggle nav-btn" aria-haspopup="true" aria-expanded="false">Filter</button>
+      <button id="search-toggle" class="search-toggle nav-btn" aria-label="Show search">Ara</button>
+      <input type="text" id="search" placeholder="Projelerde ara..." autocomplete="off" style="display:none;">
+      <button id="filter-toggle" class="filter-toggle nav-btn" aria-haspopup="true" aria-expanded="false">Seç</button>
       <div id="filter-w-row" class="filter-w-row" style="display:none;">
         {% set allProjects = collections.project %}
         {% set whatList = allProjects | map('data.what') | sort | unique %}
@@ -56,7 +62,7 @@
         {% set whereList = allProjects | map('data.where') | sort | unique %}
         {% set whenList = allProjects | map('data.when') | sort | unique %}
         <div class="filter-w-item" tabindex="0">
-          <span>What</span>
+          <span>Ne</span>
           <div class="filter-w-submenu">
             {% for what in whatList %}
               {% if what is string %}
@@ -66,7 +72,7 @@
           </div>
         </div>
         <div class="filter-w-item" tabindex="0">
-          <span>Who</span>
+          <span>Kim</span>
           <div class="filter-w-submenu">
             {% for who in whoList %}
               {% if who is string %}
@@ -76,7 +82,7 @@
           </div>
         </div>
         <div class="filter-w-item" tabindex="0">
-          <span>Where</span>
+          <span>Nerede</span>
           <div class="filter-w-submenu">
             {% for where in whereList %}
               {% if where is string %}
@@ -86,7 +92,7 @@
           </div>
         </div>
         <div class="filter-w-item" tabindex="0">
-          <span>When</span>
+          <span>Ne zaman</span>
           <div class="filter-w-submenu">
             {% for when in whenList %}
               {% if when is string %}
@@ -96,7 +102,7 @@
           </div>
         </div>
       </div>
-      <a href="/about" class="nav-btn">About</a>
+      <a href="/about" class="nav-btn">Hakkında</a>
       <button id="theme-switch" aria-label="Toggle dark mode" class="theme-switch nav-btn"></button>
     </nav>
   </header>

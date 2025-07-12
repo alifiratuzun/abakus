@@ -335,6 +335,77 @@ header {
 
 /* --- Project Detail Page --- */
 
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-text {
+  font-size: 2.2rem;
+  font-weight: var(--font-weight-medium);
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.logo-line-segments {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  width: 97%;
+  margin-bottom: -0.2rem;
+  gap: 0.25em;
+}
+
+.logo-line {
+  height: 4px;
+  display: block;
+  border-radius: 0;
+}
+
+.logo-line-abak {
+  background: #b72828;
+  width: 70%;
+}
+
+.logo-line-u {
+  background: #111;
+  width: 14.9%;
+}
+
+.logo-line-s {
+  background: #b72828;
+  width: 14.9%;
+}
+
+.logo-stack h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.logo-area h1 {
+  margin: 0;
+  padding: 0;
+}
+
 .logo-area h1 a {
   font-weight: var(--font-weight-medium);
 }
@@ -529,4 +600,31 @@ a:active {
   color: var(--color-text-secondary);
   margin-bottom: 1em;
   text-align: left;
+}
+
+.logo-link:hover .logo-text,
+.logo-link:focus .logo-text {
+  color: #bbb;
+  transition: color 0.2s;
+}
+
+.logo-link:hover .logo-line,
+.logo-link:focus .logo-line {
+  background: #e1b6b6;
+  transition: background 0.2s;
+}
+
+.logo-link:hover .logo-line-u,
+.logo-link:focus .logo-line-u {
+  background: #bbb;
+  transition: background 0.2s;
+}
+
+.about-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
 }

@@ -4,7 +4,8 @@
   "description": "portfolio for abakus studio",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "dev": "eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

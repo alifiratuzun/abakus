@@ -26,6 +26,10 @@ collections:
       - label: "Images"
         name: "images"
         widget: "list"
+        required: true
+        default:
+          - image: "/img/placeholder.jpg"
+            alt: "Placeholder image"
         fields:
           - { label: "Image", name: "image", widget: "image", required: true }
           - { label: "Alt Text", name: "alt", widget: "string", required: false, hint: "Describe the image for accessibility" }
