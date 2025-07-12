@@ -1,0 +1,94 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<main class="project-list-main">
+  <table class="project-list-table">
+    <thead>
+      <tr>
+        <th data-sort="title">Proje</th>
+        <th data-sort="who">Mimar</th>
+        <th data-sort="when">Yıl</th>
+        <th data-sort="where">Yer</th>
+      </tr>
+    </thead>
+    <tbody id="project-list-body">
+      {% for project in collections.project | reverse %}
+      <tr class="project-row" data-href="{{ project.url }}">
+        <td>{{ project.data.title }}</td>
+        <td>{{ project.data.who }}</td>
+        <td>{{ project.data.when }}</td>
+        <td>{{ project.data.where }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+<script>
+// Minimalistic sortable table with active column highlight and row links
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+const comparer = (idx, asc, type) => (a, b) => {
+  let v1 = getCellValue(asc ? a : b, idx);
+  let v2 = getCellValue(asc ? b : a, idx);
+  if(type === 'when') {
+    v1 = v1.replace(/[^\d]/g, '') || '0';
+    v2 = v2.replace(/[^\d]/g, '') || '0';
+    return parseInt(v1) - parseInt(v2);
+  }
+  return v1.localeCompare(v2, 'tr', {numeric: true});
+};
+const ths = document.querySelectorAll('.project-list-table th');
+let activeSortIdx = 0;
+let asc = true;
+ths.forEach((th, idx) => th.addEventListener('click', function() {
+  const table = th.closest('table');
+  Array.from(table.querySelectorAll('tbody tr'))
+    .sort(comparer(idx, asc, th.dataset.sort))
+    .forEach(tr => table.querySelector('tbody').appendChild(tr));
+  ths.forEach(t => t.classList.remove('active-sort'));
+  th.classList.add('active-sort');
+  activeSortIdx = idx;
+  asc = !asc;
+}));
+// Make each row clickable
+Array.from(document.querySelectorAll('.project-row')).forEach(row => {
+  row.style.cursor = 'pointer';
+  row.addEventListener('click', () => {
+    window.location = row.getAttribute('data-href');
+  });
+});
+// Set default sort highlight
+ths[activeSortIdx].classList.add('active-sort');
+</script>
+<style>
+.project-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.05rem;
+  margin: 2rem auto;
+  background: none;
+}
+.project-list-table th, .project-list-table td {
+  padding: 0.5em 0.7em;
+  text-align: left;
+  font-weight: 400;
+  background: none;
+}
+.project-list-table th {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background: none;
+  transition: color 0.2s;
+}
+.project-list-table th.active-sort {
+  color: #b72828;
+}
+.project-list-table tr {
+  background: none;
+}
+.project-list-table tr:hover td {
+  background: none;
+  color: var(--color-link-hover);
+}
+</style>
+{% endblock %} 

@@ -1,4 +1,5 @@
 ---
+title: Bil
 layout: about.njk
 ---
 

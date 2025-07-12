@@ -1,3 +1,5 @@
+const { DateTime } = require("luxon");
+
 module.exports = function (eleventyConfig) {
   // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy("css");
@@ -19,6 +21,11 @@ module.exports = function (eleventyConfig) {
       if (typeof item !== "object" || item === null) return undefined;
       return prop.split('.').reduce((acc, key) => acc && acc[key], item);
     }).filter(item => item !== undefined);
+  });
+
+  // Add a date filter for Nunjucks
+  eleventyConfig.addFilter("date", (dateObj, format = "yyyy-MM-dd") => {
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(format);
   });
 
   // Create a custom collection for projects

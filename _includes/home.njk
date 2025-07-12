@@ -9,7 +9,7 @@
          data-where="{{ project.data.where | slug }}"
          data-when="{{ project.data.when | slug }}">
         <div class="thumb-img-wrapper">
-          <img src="{{ project.data.images[0] }}" alt="{{ project.data.title }}">
+          <img src="{{ project.data.images[0].image }}" alt="{{ project.data.images[0].alt or project.data.title }}">
         </div>
         <div class="thumb-text">
           <h2>{{ project.data.title }}</h2>

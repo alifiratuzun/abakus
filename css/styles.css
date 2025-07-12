@@ -387,7 +387,7 @@ header {
 }
 
 .logo-line-u {
-  background: #111;
+  background: var(--color-text-primary);
   width: 14.9%;
 }
 
