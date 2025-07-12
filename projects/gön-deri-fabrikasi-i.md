@@ -1,16 +1,20 @@
 ---
 title: Gön Deri Fabrikası - I
-ne: Endüstriyel
-kim: Nevzat Sayın
-nerede: Istanbul, Türkiye
+what: Endüstriyel
+who: Nevzat Sayın
+where: İstanbul
+when: "1992"
+footnote: |
+  [1] https://www.nsmh.com/Gon-Deri-Fabrikasi-I
 Ne Zaman: "1992"
 images:
   - image: /img/web_nsmh_gon1_3.jpg
   - image: /img/gon1.jpg
-footnote: |
-  [1] https://www.nsmh.com/Gon-Deri-Fabrikasi-I
 layout: project.njk
+nerede: Istanbul, Türkiye
+kim: Nevzat Sayın
 location: Ankara, Türkiye
+ne: Endüstriyel
 type:
   - Religious
 year: 1965
