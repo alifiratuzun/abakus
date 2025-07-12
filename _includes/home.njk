@@ -13,10 +13,10 @@
         </div>
         <div class="thumb-text">
           <h2>{{ project.data.title }}</h2>
-          {% if project.data.who %}<div class="thumb-who">{{ project.data.who }}</div>{% endif %}
+          {% if project.data.Kim %}<div class="thumb-who">{{ project.data.Kim }}</div>{% endif %}
           <p>
-            {{ project.data.where or project.data.location }}<br>
-            <span class="thumb-year">{{ project.data.when or project.data.year }}</span>
+            {{ project.data.Nerede or project.data.location }}<br>
+            <span class="thumb-year">{{ project.data['Ne Zaman'] or project.data.year }}</span>
           </p>
         </div>
       </a>
