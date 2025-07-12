@@ -1,23 +1,9 @@
 ---
 title: ODTÜ Mimarlık Fakültesi
-what: Eğitim
-who: Behruz ve Altuğ Çinici
-where: Ankara, Türkiye
-footnote: >
-  [1] Bu konu ile ilgili Meltem Ö.Gürel'in 2016'da derlediği
-  Mid-Century Modernism in Turkey kitabında bulunan, Burak Erdim'in, Under the
-  Flags of the Marshall Plan: Multiple Modernisms and Professional Legitimacy in
-  the Cold War Middle East, 1950-1964 makalesini okuyabilirsiniz.
-
-  <br>
-
-  [2] Arkitekt, Cilt: 1965 Sayı: 1965-03 (320) Sayfa: 108-109, 114.
 Ne: Eğitim
-when: "1963"
-layout: project.njk
-nerede: Ankara, Türkiye
-kim: Behruz Çinici, Altuğ Çinici
-ne: Eğitim
+Kim: Behruz Çinici, Altuğ Çinici
+Nerede: Ankara, Türkiye
+Ne Zaman: "1963"
 images:
   - image: /img/8-mim4.jpg.jpeg
   - image: /img/metu-_faculty_of_architecture_-14663256957-.jpg
@@ -28,6 +14,16 @@ images:
     alt: © Gültekin Çizgen
   - image: /img/gultekin-cizgen2.jpeg
     alt: © Gültekin Çizgen
+footnote: |
+  [1] Bu konu ile ilgili Meltem Ö.Gürel'in 2016'da derlediği
+  Mid-Century Modernism in Turkey kitabında bulunan, Burak Erdim'in, Under the
+  Flags of the Marshall Plan: Multiple Modernisms and Professional Legitimacy in
+  the Cold War Middle East, 1950-1964 makalesini okuyabilirsiniz.
+
+  <br>
+
+  [2] Arkitekt, Cilt: 1965 Sayı: 1965-03 (320) Sayfa: 108-109, 114.
+layout: project.njk
 ---
 1961 yılında, ODTÜ kampüsü ve binaları için açılan yarışmayı kazanan Behruz Çinici ve Altuğ Çinici tarafından tasarlanan yapının inşaatı 1963 yılında tamamlandı.
 
