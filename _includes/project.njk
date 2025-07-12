@@ -6,10 +6,10 @@
       <div class="project-meta">
         <h1>{{ title }}</h1>
         <div class="project-meta-info">
-          {% if project.data.Ne %}<div class="project-meta-row"><span class="meta-label">Ne:</span> {{ project.data.Ne }}</div>{% endif %}
-          {% if project.data.Kim %}<div class="project-meta-row"><span class="meta-label">Kim:</span> {{ project.data.Kim }}</div>{% endif %}
-          {% if project.data.Nerede %}<div class="project-meta-row"><span class="meta-label">Nerede:</span> {{ project.data.Nerede }}</div>{% endif %}
-          {% if project.data['Ne Zaman'] %}<div class="project-meta-row"><span class="meta-label">Ne Zaman:</span> {{ project.data['Ne Zaman'] }}</div>{% endif %}
+          {% if Ne %}<div class="project-meta-row"><span class="meta-label">Ne:</span> {{ Ne }}</div>{% endif %}
+          {% if Kim %}<div class="project-meta-row"><span class="meta-label">Kim:</span> {{ Kim }}</div>{% endif %}
+          {% if Nerede %}<div class="project-meta-row"><span class="meta-label">Nerede:</span> {{ Nerede }}</div>{% endif %}
+          {% if attribute(_context, 'Ne Zaman') %}<div class="project-meta-row"><span class="meta-label">Ne Zaman:</span> {{ attribute(_context, 'Ne Zaman') }}</div>{% endif %}
         </div>
       </div>
     {% endblock %}
