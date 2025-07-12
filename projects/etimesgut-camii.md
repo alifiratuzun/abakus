@@ -14,19 +14,19 @@ images:
 footnote: >-
   \[1] Etimesgut Cami-Cengiz Bektaş. (2008). Erişim adresi:
   https://www.mimarizm.com/makale/etimesgut-cami-cengiz-bektas_113496 Erişim
-  Tarihi: 30.01.2021
+  Tarihi: 30.01.2021<br>
 
 
-  \[2] Mimarlıkta Kopya ve Taklit Olmaz. (2012). Milliyet Gazetesi. Erişim adresi: https://www.milliyet.com.tr/pazar/mimarlikta-kopya-ve-taklit-olmaz-1573156 Erişim Tarihi: 30.01.2021
+  \[2] Mimarlıkta Kopya ve Taklit Olmaz. (2012). Milliyet Gazetesi. Erişim adresi: https://www.milliyet.com.tr/pazar/mimarlikta-kopya-ve-taklit-olmaz-1573156 Erişim Tarihi: 30.01.2021<br>
 
 
-  \[3] Cengiz Bektaş’ın Ardından. (2020). Erişim Adresi: https://www.vbenzeri.com/mimari/cengiz-bektasin-ardindan, Erişim Tarihi: 30.01.2021
+  \[3] Cengiz Bektaş’ın Ardından. (2020). Erişim Adresi: https://www.vbenzeri.com/mimari/cengiz-bektasin-ardindan, Erişim Tarihi: 30.01.2021<br>
 
 
-  \[4] Bektaş, C. (1979). Mimarlık Çalışmaları. Ankara: Yaprak Kitabevi.
+  \[4] Bektaş, C. (1979). Mimarlık Çalışmaları. Ankara: Yaprak Kitabevi.<br>
 
 
-  \[5] Anonim. (1973). Bir Cami. Arkitekt, 124-125, 351.
+  \[5] Anonim. (1973). Bir Cami. Arkitekt, 124-125, 351<br>
 
 
   \[6] Erişim adresi: www.mimdap.org, Erişim Tarihi: 30.01.2021
