@@ -1,14 +1,14 @@
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
-  // Ignore admin so it's only passthrough-copied (no Liquid processing)
-  eleventyConfig.ignores.add("admin");
+  // Ignore cms so it's only passthrough-copied (no Liquid processing)
+  eleventyConfig.ignores.add("cms");
 
   // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addPassthroughCopy("cms");
   eleventyConfig.addPassthroughCopy("CNAME");
 
   // Add a unique filter for arrays
