@@ -20,9 +20,13 @@ function fetchSanityProjects() {
 }
 
 module.exports = function (eleventyConfig) {
-  if (useSanity) eleventyConfig.ignores.add("projects/*.md");
-  eleventyConfig.ignores.add("cms");
+  if (useSanity) {
+    eleventyConfig.ignores.add("projects");
+  } else {
+    eleventyConfig.ignores.add("projects-pagination.11ty.js");
+  }
   eleventyConfig.ignores.add("sanity");
+  eleventyConfig.ignores.add("SANITY_SETUP.md");
 
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("img");
@@ -99,9 +103,9 @@ module.exports = function (eleventyConfig) {
           images: p.images || [],
           cover_image: p.cover_image,
           footnote: p.footnote,
+          bodyHtml: p.body,
           layout: "project.njk",
         },
-        templateContent: p.body,
       }));
     }
     return collection.getFilteredByGlob("projects/*.md");

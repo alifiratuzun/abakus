@@ -14,7 +14,7 @@ const crypto = require("crypto");
 const PROJECT_ID = process.env.SANITY_PROJECT_ID || process.env.SANITY_STUDIO_PROJECT_ID;
 const DATASET = process.env.SANITY_DATASET || process.env.SANITY_STUDIO_DATASET || "production";
 
-if (!PROJECT_ID || PROJECT_ID === "your-project-id") {
+if (!PROJECT_ID || PROJECT_ID === "mj0qagm1") {
   console.error("Set SANITY_PROJECT_ID (create a project at sanity.io)");
   process.exit(1);
 }

@@ -24,7 +24,7 @@ const GROQ = `*[_type == "project"] | order(tarih desc) {
 }`
 
 async function fetchProjects() {
-  if (!PROJECT_ID || PROJECT_ID === 'your-project-id') {
+  if (!PROJECT_ID || PROJECT_ID === 'mj0qagm1') {
     return []
   }
   const query = encodeURIComponent(GROQ)

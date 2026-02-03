@@ -1,24 +1,35 @@
 {% extends "layout.njk" %}
 
+{% set p = project if project else {} %}
+{% set _title = p.data.title if p.data and p.data.title else title %}
+{% set _mimar = p.data.mimar if p.data and p.data.mimar else mimar %}
+{% set _yer = p.data.yer if p.data and p.data.yer else yer %}
+{% set _tur = p.data.tur if p.data and p.data.tur else tur %}
+{% set _tarih = p.data.tarih if p.data and p.data.tarih else tarih %}
+{% set _images = p.data.images if p.data and p.data.images else images %}
+{% set _cover_image = p.data.cover_image if p.data and p.data.cover_image else cover_image %}
+{% set _footnote = p.data.footnote if p.data and p.data.footnote else footnote %}
+{% set _bodyHtml = p.data.bodyHtml if p.data and p.data.bodyHtml else "" %}
+
 {% block content %}
   <article class="project">
     {% block projectmeta %}
       <div class="project-meta">
-        <h1>{{ title }}</h1>
+        <h1>{{ _title }}</h1>
         <div class="project-meta-info aligned-meta">
-          {% if mimar %}<div class="project-meta-row"><span class="meta-label">Mimar:</span> <span class="meta-value">{{ mimar }}</span></div>{% endif %}
-          {% if yer %}<div class="project-meta-row"><span class="meta-label">Yer:</span> <span class="meta-value">{{ yer }}</span></div>{% endif %}
-          {% if tur %}<div class="project-meta-row"><span class="meta-label">Tür:</span> <span class="meta-value">{{ tur }}</span></div>{% endif %}
-          {% if tarih %}<div class="project-meta-row"><span class="meta-label">Tarih:</span> <span class="meta-value">{{ tarih }}</span></div>{% endif %}
+          {% if _mimar %}<div class="project-meta-row"><span class="meta-label">Mimar:</span> <span class="meta-value">{{ _mimar }}</span></div>{% endif %}
+          {% if _yer %}<div class="project-meta-row"><span class="meta-label">Yer:</span> <span class="meta-value">{{ _yer }}</span></div>{% endif %}
+          {% if _tur %}<div class="project-meta-row"><span class="meta-label">Tür:</span> <span class="meta-value">{{ _tur }}</span></div>{% endif %}
+          {% if _tarih %}<div class="project-meta-row"><span class="meta-label">Tarih:</span> <span class="meta-value">{{ _tarih }}</span></div>{% endif %}
         </div>
       </div>
     {% endblock %}
-    {% set heroImage = cover_image or (images and images[0]) %}
+    {% set heroImage = _cover_image or (_images and _images[0]) %}
     {% set hasBlocks = content_blocks and content_blocks.length > 0 %}
     <div class="project-main project-main-centered">
       {% if heroImage %}
         <figure class="project-hero">
-          <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(title) }}">
+          <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(_title) }}">
           {% if heroImage.alt %}
             <figcaption class="image-alt-text">{{ heroImage.alt }}</figcaption>
           {% endif %}
@@ -33,7 +44,7 @@
             </div>
           {% elif block.type == "image" and block.image %}
             <figure class="project-block project-block-image">
-              <img src="{{ block.image }}" alt="{{ block.alt | default(title) }}">
+              <img src="{{ block.image }}" alt="{{ block.alt | default(_title) }}">
               {% if block.caption or block.alt %}
                 <figcaption class="image-alt-text">{{ block.caption or block.alt }}</figcaption>
               {% endif %}
@@ -41,26 +52,26 @@
           {% endif %}
         {% endfor %}
       {% else %}
-        {% if images %}
-          {% for img in images %}
-            <img src="{{ img.image }}" alt="{{ img.alt | default(title) }}">
+        {% if _images %}
+          {% for img in _images %}
+            <img src="{{ img.image }}" alt="{{ img.alt | default(_title) }}">
             {% if img.alt %}
               <div class="image-alt-text">{{ img.alt }}</div>
             {% endif %}
           {% endfor %}
         {% elseif heroImage %}
-          <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(title) }}">
+          <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(_title) }}">
           {% if heroImage.alt %}
             <div class="image-alt-text">{{ heroImage.alt }}</div>
           {% endif %}
         {% endif %}
         <div class="body">
-          {{ content | safe }}
+          {{ (_bodyHtml or content) | safe }}
         </div>
       {% endif %}
     </div>
   </article>
-  {% if footnote %}
-    <div class="project-footnote">{{ footnote | safe }}</div>
+  {% if _footnote %}
+    <div class="project-footnote">{{ _footnote | safe }}</div>
   {% endif %}
 {% endblock %}
