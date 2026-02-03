@@ -5,10 +5,15 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
-    "dev": "eleventy --serve"
+    "dev": "eleventy --serve",
+    "studio": "cd sanity && npm run dev",
+    "studio:build": "cd sanity && npm run build"
+  },
+  "dependencies": {
+    "@portabletext/to-html": "^3.0.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "netlify-cms": "^2.10.192"
+    "gray-matter": "^4.0.3"
   }
 }

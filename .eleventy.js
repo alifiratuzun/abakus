@@ -1,14 +1,32 @@
 const { DateTime } = require("luxon");
+const { execSync } = require("child_process");
+const path = require("path");
+
+const useSanity =
+  process.env.SANITY_PROJECT_ID &&
+  process.env.SANITY_PROJECT_ID !== "your-project-id";
+
+function fetchSanityProjects() {
+  try {
+    const scriptPath = path.join(__dirname, "scripts", "fetch-sanity.js");
+    const out = execSync(`node "${scriptPath}"`, {
+      encoding: "utf-8",
+      env: process.env,
+    });
+    return JSON.parse(out);
+  } catch (e) {
+    return [];
+  }
+}
 
 module.exports = function (eleventyConfig) {
-  // Ignore cms so it's only passthrough-copied (no Liquid processing)
+  if (useSanity) eleventyConfig.ignores.add("projects/*.md");
   eleventyConfig.ignores.add("cms");
+  eleventyConfig.ignores.add("sanity");
 
-  // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("cms");
   eleventyConfig.addPassthroughCopy("CNAME");
 
   // Add a unique filter for arrays
@@ -65,8 +83,27 @@ module.exports = function (eleventyConfig) {
     }
   });
 
-  // Create a custom collection for projects
   eleventyConfig.addCollection("project", function (collection) {
+    if (useSanity) {
+      const raw = fetchSanityProjects();
+      return raw.map((p) => ({
+        url: `/projects/${p.slug}/`,
+        fileSlug: p.slug,
+        data: {
+          title: p.title,
+          mimar: p.mimar,
+          yer: p.yer,
+          tur: p.tur,
+          tarih: p.tarih,
+          slug: p.slug,
+          images: p.images || [],
+          cover_image: p.cover_image,
+          footnote: p.footnote,
+          layout: "project.njk",
+        },
+        templateContent: p.body,
+      }));
+    }
     return collection.getFilteredByGlob("projects/*.md");
   });
 
