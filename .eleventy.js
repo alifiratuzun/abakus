@@ -1,6 +1,9 @@
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
+  // Ignore admin so it's only passthrough-copied (no Liquid processing)
+  eleventyConfig.ignores.add("admin");
+
   // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("img");
