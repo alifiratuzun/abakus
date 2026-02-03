@@ -1,12 +1,4 @@
 [build]
   command = "eleventy"
   publish = "_site"
-
-[[redirects]]
-  from = "/admin"
-  to = "/cms/"
-  status = 302
-[[redirects]]
-  from = "/admin/"
-  to = "/cms/"
-  status = 302
+  environment = { SANITY_PROJECT_ID = "mj0qagm1", SANITY_DATASET = "production" }
