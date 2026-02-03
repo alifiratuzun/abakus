@@ -159,7 +159,7 @@
             if (e.target && e.target.closest('.nc-entryEditor-toolbarPublish')) {
               // Wait for publish to complete, then redirect
               setTimeout(function () {
-                window.location.href = '/admin/';
+                window.location.href = '/cms/';
               }, 2000); // Adjust delay as needed
             }
           });
@@ -173,8 +173,8 @@
         const modal = document.querySelector('.nc-modal-root');
         if (!modal) {
           setTimeout(() => {
-            if (window.location.pathname !== '/admin/') {
-              window.location.href = '/admin/';
+            if (window.location.pathname !== '/cms/') {
+              window.location.href = '/cms/';
             }
           }, 500);
         }
