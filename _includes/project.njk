@@ -13,16 +13,51 @@
         </div>
       </div>
     {% endblock %}
+    {% set heroImage = cover_image or (images and images[0]) %}
+    {% set hasBlocks = content_blocks and content_blocks.length > 0 %}
     <div class="project-main project-main-centered">
-      {% for img in images %}
-        <img src="{{ img.image }}" alt="{{ img.alt | default(title) }}">
-        {% if img.alt %}
-          <div class="image-alt-text">{{ img.alt }}</div>
+      {% if heroImage %}
+        <figure class="project-hero">
+          <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(title) }}">
+          {% if heroImage.alt %}
+            <figcaption class="image-alt-text">{{ heroImage.alt }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+
+      {% if hasBlocks %}
+        {% for block in content_blocks %}
+          {% if block.type == "text" and block.body %}
+            <div class="project-block project-block-text">
+              {{ block.body | safe }}
+            </div>
+          {% elif block.type == "image" and block.image %}
+            <figure class="project-block project-block-image">
+              <img src="{{ block.image }}" alt="{{ block.alt | default(title) }}">
+              {% if block.caption or block.alt %}
+                <figcaption class="image-alt-text">{{ block.caption or block.alt }}</figcaption>
+              {% endif %}
+            </figure>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% if images %}
+          {% for img in images %}
+            <img src="{{ img.image }}" alt="{{ img.alt | default(title) }}">
+            {% if img.alt %}
+              <div class="image-alt-text">{{ img.alt }}</div>
+            {% endif %}
+          {% endfor %}
+        {% elseif heroImage %}
+          <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(title) }}">
+          {% if heroImage.alt %}
+            <div class="image-alt-text">{{ heroImage.alt }}</div>
+          {% endif %}
         {% endif %}
-      {% endfor %}
-      <div class="body">
-        {{ content | safe }}
-      </div>
+        <div class="body">
+          {{ content | safe }}
+        </div>
+      {% endif %}
     </div>
   </article>
   {% if footnote %}

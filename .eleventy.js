@@ -50,7 +50,16 @@ module.exports = function (eleventyConfig) {
     tur: data => data["Tür"] || data["Tur"] || data["Ne"] || data.tur,
     mimar: data => data["Mimar"] || data["Kim"] || data.mimar,
     yer: data => data["Yer"] || data["Nerede"] || data.yer,
-    tarih: data => data["Tarih"] || data["Ne Zaman"] || data.tarih
+    tarih: data => data["Tarih"] || data["Ne Zaman"] || data.tarih,
+    cover_image: data => {
+      if (data.cover_image && data.cover_image.image) {
+        return data.cover_image;
+      }
+      if (Array.isArray(data.images) && data.images.length > 0) {
+        return data.images[0];
+      }
+      return null;
+    }
   });
 
   // Create a custom collection for projects

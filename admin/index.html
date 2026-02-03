@@ -7,12 +7,70 @@
   <title>Content Manager</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body,
+    .nc-app,
+    .nc-mainContent {
+      background: #080808;
+      color: #f5f5f5;
+      font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .nc-app *,
+    .nc-mainContent * {
+      scrollbar-color: #b72828 rgba(255, 255, 255, 0.08);
+    }
+
     .nc-app,
     .nc-mainContent,
     .nc-collectionPage-content,
     .nc-collectionPage,
     .nc-entryEditor-toolbar {
       overflow: visible;
+    }
+
+    .nc-collectionPage,
+    .nc-entryEditor,
+    .nc-entryEditor-controlPane,
+    .nc-entryEditor-previewPane {
+      background: #0f0f10;
+    }
+
+    .nc-collectionPage-sidebar,
+    .nc-entryEditor-sidebar {
+      background: #111214;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nc-entryCard,
+    .nc-collectionPage-card {
+      background: #131417;
+      border-color: rgba(255, 255, 255, 0.08);
+      color: #f5f5f5;
+    }
+
+    .nc-app input,
+    .nc-app textarea,
+    .nc-app select {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+    }
+
+    .nc-app button {
+      background: #b72828;
+      border: none;
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+    }
+
+    .nc-app button:hover {
+      background: #d73838;
     }
 
     .nc-widgetDropdown-list,
@@ -22,6 +80,9 @@
       white-space: normal;
       overflow: visible;
       z-index: 9999;
+      background: #111214;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
     }
 
     .nc-dropdown-list {
@@ -32,6 +93,61 @@
     .nc-dropdown-list li,
     .nc-widgetDropdown-list li {
       white-space: normal;
+    }
+
+    .nc-entryEditor {
+      align-items: stretch;
+    }
+
+    .nc-entryEditor-controlPane {
+      flex-basis: clamp(420px, 45vw, 760px);
+    }
+
+    .nc-entryEditor-previewPane {
+      flex-basis: clamp(420px, 50vw, 900px);
+      max-width: 900px;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      background: #09090a;
+    }
+
+    .nc-entryEditor-previewPane iframe {
+      width: 100% !important;
+    }
+
+    .nc-entryEditor-previewPaneToggle {
+      background: #1b1c1f;
+      color: #f5f5f5;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: none;
+      border-radius: 0 6px 6px 0;
+      align-self: stretch;
+    }
+
+    .nc-widget-list .nc-fieldControl {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      padding: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nc-widget-image,
+    .nc-widget-file,
+    .nc-widget-markdown {
+      background: rgba(255, 255, 255, 0.01);
+      border-radius: 8px;
+      padding: 0.5rem;
+    }
+
+    @media (max-width: 1200px) {
+      .nc-entryEditor {
+        flex-direction: column;
+      }
+
+      .nc-entryEditor-controlPane,
+      .nc-entryEditor-previewPane {
+        max-width: 100%;
+        flex-basis: 100%;
+      }
     }
   </style>
   <script>

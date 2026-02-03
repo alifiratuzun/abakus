@@ -14,8 +14,14 @@
     </thead>
     <tbody id="project-list-body">
       {% for project in collections.project | reverse %}
-      <tr class="project-row" data-href="{{ project.url }}">
-        <td>{{ project.data.title }}</td>
+      <tr class="project-row"
+          data-href="{{ project.url }}"
+          data-title="{{ project.data.title | escape }}"
+          data-mimar="{{ project.data.mimar | escape }}"
+          data-yer="{{ project.data.yer | escape }}"
+          data-tur="{{ project.data.tur | escape }}"
+          data-tarih="{{ project.data.tarih | escape }}">
+        <td><a href="{{ project.url }}" class="project-list-link">{{ project.data.title }}</a></td>
         <td>{{ project.data.mimar }}</td>
         <td>{{ project.data.yer.split(',')[0] }}</td>
         <td>{{ project.data.tur }}</td>
@@ -62,6 +68,9 @@ Array.from(document.querySelectorAll('.project-row')).forEach(row => {
 ths[activeSortIdx].classList.add('active-sort');
 </script>
 <style>
+.project-list-main {
+  overflow-x: auto;
+}
 .project-list-table {
   width: 100%;
   border-collapse: collapse;
@@ -69,7 +78,8 @@ ths[activeSortIdx].classList.add('active-sort');
   margin: 2rem auto;
   background: none;
 }
-.project-list-table th, .project-list-table td {
+.project-list-table th,
+.project-list-table td {
   padding: 0.5em 0.7em;
   text-align: left;
   font-weight: 400;
@@ -81,6 +91,22 @@ ths[activeSortIdx].classList.add('active-sort');
   color: var(--color-text-primary);
   background: none;
   transition: color 0.2s;
+}
+.project-list-table td {
+  color: var(--color-text-primary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+[data-theme="dark"] .project-list-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.project-list-link {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+.project-list-link:hover,
+.project-list-link:focus {
+  color: var(--color-link);
 }
 .project-list-table th.active-sort {
   color: #b72828;

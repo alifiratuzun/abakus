@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if title %}{{ title }}{% else %}abakus{% endif %}</title>
+  <title>abakus</title>
   <meta name="description" content="Portfolio for Abakus architectural studio.">
   <!-- Prevent FOUC: Set theme before CSS loads -->
   <script>
@@ -24,14 +24,14 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abakus.studio/">
-  <meta property="og:title" content="{{ title }} | Abakus">
+  <meta property="og:title" content="{{ title | default('abakus') }}">
   <meta property="og:description" content="Portfolio for Abakus architectural studio.">
   <meta property="og:image" content="https://abakus.studio/img/casa-blanca-1.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://abakus.studio/">
-  <meta property="twitter:title" content="{{ title }} | Abakus">
+  <meta property="twitter:title" content="{{ title | default('abakus') }}">
   <meta property="twitter:description" content="Portfolio for Abakus architectural studio.">
   <meta property="twitter:image" content="https://abakus.studio/img/casa-blanca-1.jpg">
   

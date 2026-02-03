@@ -3,13 +3,20 @@
 {% block content %}
   <main class="grid">
     {% for project in collections.project %}
+      {% set fallbackImage = project.data.images and project.data.images[0] %}
+      {% set primaryImage = project.data.cover_image or fallbackImage %}
       <a class="thumb" href="{{ project.url }}"
          data-tur="{{ project.data.tur | slug }}"
          data-mimar="{{ project.data.mimar }}"
          data-yer="{{ project.data.yer | slug }}"
-         data-tarih="{{ project.data.tarih | truncate(3, false, '') ~ "0'lar" }}">
+         data-tarih="{{ project.data.tarih }}"
+         data-decade="{{ project.data.tarih | truncate(3, false, '') ~ "0'lar" }}">
         <div class="thumb-img-wrapper">
-          <img src="{{ project.data.images[0].image }}" alt="{{ project.data.images[0].alt or project.data.title }}">
+          {% if primaryImage %}
+            <img src="{{ primaryImage.image }}" alt="{{ primaryImage.alt or project.data.title }}">
+          {% else %}
+            <div class="thumb-img-placeholder" aria-hidden="true"></div>
+          {% endif %}
         </div>
         <div class="thumb-text">
           <h2>{{ project.data.title }}</h2>
