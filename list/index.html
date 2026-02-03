@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bul</title>
+  <title>abakus</title>
   <meta name="description" content="Portfolio for Abakus architectural studio.">
   <!-- Prevent FOUC: Set theme before CSS loads -->
   <script>
@@ -24,14 +24,14 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abakus.studio/">
-  <meta property="og:title" content="Bul | Abakus">
+  <meta property="og:title" content="Bul">
   <meta property="og:description" content="Portfolio for Abakus architectural studio.">
   <meta property="og:image" content="https://abakus.studio/img/casa-blanca-1.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://abakus.studio/">
-  <meta property="twitter:title" content="Bul | Abakus">
+  <meta property="twitter:title" content="Bul">
   <meta property="twitter:description" content="Portfolio for Abakus architectural studio.">
   <meta property="twitter:image" content="https://abakus.studio/img/casa-blanca-1.jpg">
   
@@ -172,24 +172,42 @@
     </thead>
     <tbody id="project-list-body">
       
-      <tr class="project-row" data-href="/projects/odtü-mimarlık-fakültesi/">
-        <td>ODTÜ Mimarlık Fakültesi</td>
+      <tr class="project-row"
+          data-href="/projects/odtü-mimarlık-fakültesi/"
+          data-title="ODTÜ Mimarlık Fakültesi"
+          data-mimar="Behruz Çinici, Altuğ Çinici"
+          data-yer="Ankara, Türkiye"
+          data-tur="Eğitim"
+          data-tarih="1963">
+        <td><a href="/projects/odtü-mimarlık-fakültesi/" class="project-list-link">ODTÜ Mimarlık Fakültesi</a></td>
         <td>Behruz Çinici, Altuğ Çinici</td>
         <td>Ankara</td>
         <td>Eğitim</td>
         <td>1963</td>
       </tr>
       
-      <tr class="project-row" data-href="/projects/gön-deri-fabrikasi-i/">
-        <td>Gön Deri Fabrikası - I</td>
+      <tr class="project-row"
+          data-href="/projects/gön-deri-fabrikasi-i/"
+          data-title="Gön Deri Fabrikası - I"
+          data-mimar="Nevzat Sayın"
+          data-yer="İstanbul, Türkiye"
+          data-tur="Endüstriyel"
+          data-tarih="1992">
+        <td><a href="/projects/gön-deri-fabrikasi-i/" class="project-list-link">Gön Deri Fabrikası - I</a></td>
         <td>Nevzat Sayın</td>
         <td>İstanbul</td>
         <td>Endüstriyel</td>
         <td>1992</td>
       </tr>
       
-      <tr class="project-row" data-href="/projects/etimesgut-camii/">
-        <td>Etimesgut Camii</td>
+      <tr class="project-row"
+          data-href="/projects/etimesgut-camii/"
+          data-title="Etimesgut Camii"
+          data-mimar="Cengiz Bektaş"
+          data-yer="Ankara, Türkiye"
+          data-tur="Dini"
+          data-tarih="1965">
+        <td><a href="/projects/etimesgut-camii/" class="project-list-link">Etimesgut Camii</a></td>
         <td>Cengiz Bektaş</td>
         <td>Ankara</td>
         <td>Dini</td>
@@ -236,6 +254,9 @@ Array.from(document.querySelectorAll('.project-row')).forEach(row => {
 ths[activeSortIdx].classList.add('active-sort');
 </script>
 <style>
+.project-list-main {
+  overflow-x: auto;
+}
 .project-list-table {
   width: 100%;
   border-collapse: collapse;
@@ -243,7 +264,8 @@ ths[activeSortIdx].classList.add('active-sort');
   margin: 2rem auto;
   background: none;
 }
-.project-list-table th, .project-list-table td {
+.project-list-table th,
+.project-list-table td {
   padding: 0.5em 0.7em;
   text-align: left;
   font-weight: 400;
@@ -255,6 +277,22 @@ ths[activeSortIdx].classList.add('active-sort');
   color: var(--color-text-primary);
   background: none;
   transition: color 0.2s;
+}
+.project-list-table td {
+  color: var(--color-text-primary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+[data-theme="dark"] .project-list-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.project-list-link {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+.project-list-link:hover,
+.project-list-link:focus {
+  color: var(--color-link);
 }
 .project-list-table th.active-sort {
   color: #b72828;
