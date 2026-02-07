@@ -1,5 +1,5 @@
 [build]
-  command = "eleventy"
+  command = "npm cache clean --force && npm ci --include=dev && npx eleventy"
   publish = "_site"
 
 [functions]
