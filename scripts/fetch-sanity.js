@@ -24,12 +24,18 @@ const GROQ = `*[_type == "project"] | order(tarih desc) {
 }`
 
 async function fetchProjects() {
-  if (!PROJECT_ID || PROJECT_ID === 'mj0qagm1') {
+  if (!PROJECT_ID) {
     return []
   }
   const query = encodeURIComponent(GROQ)
   const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/${DATASET}?query=${query}`
-  const res = await fetch(url)
+  const token =
+    process.env.SANITY_READ_TOKEN ||
+    process.env.SANITY_API_TOKEN ||
+    process.env.SANITY_AUTH_TOKEN
+  const res = await fetch(url, {
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  })
   const json = await res.json()
   if (!res.ok || json.error) {
     console.warn('[Sanity]', json.error?.description || res.statusText, '- using empty projects')

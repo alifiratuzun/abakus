@@ -13,7 +13,7 @@ Abakus uses [Sanity](https://sanity.io) for content management. The old Netlify 
 ```bash
 cd sanity
 npm install
-SANITY_STUDIO_PROJECT_ID=mj0qagm1 npm run dev
+SANITY_STUDIO_PROJECT_ID=your-project-id npm run dev
 ```
 
 Open http://localhost:3333 and add your first project.
@@ -23,7 +23,7 @@ Open http://localhost:3333 and add your first project.
 Create `.env` in the project root:
 
 ```
-SANITY_PROJECT_ID=mj0qagm1
+SANITY_PROJECT_ID=your-project-id
 SANITY_DATASET=production
 ```
 
@@ -32,7 +32,7 @@ Or set these env vars in your hosting (Netlify, Vercel, etc.).
 ## 4. Build the site
 
 ```bash
-SANITY_PROJECT_ID=mj0qagm1 npm run build
+SANITY_PROJECT_ID=your-project-id npm run build
 ```
 
 Without `SANITY_PROJECT_ID`, the site falls back to the Markdown files in `projects/`.

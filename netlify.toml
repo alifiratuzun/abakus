@@ -1,4 +1,6 @@
 [build]
   command = "eleventy"
   publish = "_site"
-  environment = { SANITY_PROJECT_ID = "mj0qagm1", SANITY_DATASET = "production" }
+
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "SANITY_PROJECT_ID,SANITY_DATASET"
