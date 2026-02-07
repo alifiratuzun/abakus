@@ -51,9 +51,15 @@
         </a>
       </div>
     </div>
-    <nav role="navigation" aria-label="Main Navigation" class="main-nav">
+    {% set isHome = page.url == '/' %}
+    {% set isList = page.url == '/list/' %}
+    {% set isAbout = page.url == '/about/' %}
+    <nav role="navigation" aria-label="Main Navigation" class="main-nav{% if isList or isAbout %} nav-has-active{% endif %}">
+      {% if isHome or isList %}
       <button id="search-toggle" class="search-toggle nav-btn" aria-label="Show search">Ara</button>
       <input type="text" id="search" placeholder="Projelerde ara..." autocomplete="off" style="display:none;">
+      {% endif %}
+      {% if isHome %}
       <button id="filter-toggle" class="filter-toggle nav-btn" aria-haspopup="true" aria-expanded="false">Seç</button>
       <div id="filter-w-row" class="filter-w-row" style="display:none;">
         {% set allProjects = collections.project %}
@@ -110,8 +116,9 @@
           </div>
         </div>
       </div>
-      <a href="/list" class="nav-btn">Bul</a>
-      <a href="/about" class="nav-btn">Bil</a>
+      {% endif %}
+      <a href="/list" class="nav-btn{% if isList %} is-active{% endif %}"{% if isList %} aria-current="page"{% endif %}>Bul</a>
+      <a href="/about" class="nav-btn{% if isAbout %} is-active{% endif %}"{% if isAbout %} aria-current="page"{% endif %}>Bil</a>
       <button id="theme-switch" aria-label="Toggle dark mode" class="theme-switch nav-btn"></button>
     </nav>
   </header>

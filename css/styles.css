@@ -70,7 +70,7 @@ body {
 header,
 main,
 article {
-  max-width: 1200px;
+  max-width: min(1400px, 92vw);
   margin: 0 auto;
 }
 
@@ -93,13 +93,29 @@ header {
   z-index: 100;
 }
 
+.main-nav.nav-has-active .nav-btn,
+.main-nav.nav-has-active a {
+  color: var(--color-text-secondary);
+}
+
+.main-nav .is-active,
+.main-nav .is-active:visited {
+  color: var(--color-nav);
+  font-weight: var(--font-weight-medium);
+}
+
+.main-nav.nav-has-active #filter-toggle.is-active {
+  color: var(--color-nav);
+}
+
+
 .nav-btn,
 .main-nav a {
   color: var(--color-nav);
   background: none;
   border: none;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-medium);
   font-weight: var(--font-weight-normal);
   cursor: pointer;
   padding: 0.2em 0.8em;
@@ -125,10 +141,10 @@ header {
   color: var(--color-text-primary);
   border: none;
   border-radius: 4px;
-  padding: 0.3rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   font-size: var(--font-size-base);
-  margin-right: 0.5em;
-  width: 180px;
+  margin-right: 0;
+  width: 140px;
   display: none;
   transition: opacity 0.2s, width 0.2s;
 }
@@ -147,10 +163,17 @@ header {
 
 #filter-w-row {
   flex-direction: row;
-  gap: 1.2em;
+  gap: clamp(0.5em, 1.4vw, 1.2em);
   align-items: flex-start;
-  margin: 0 1em;
+  margin: 0;
   animation: fadeIn 0.2s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 0.6em 0.8em;
+  background: var(--color-bg);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 #filter-w-row.active {
@@ -173,6 +196,31 @@ header {
   padding: 0.2em 0.8em;
   border-radius: 4px;
   transition: color 0.2s;
+}
+
+#filter-toggle.is-active {
+  font-weight: var(--font-weight-medium);
+}
+
+@media (max-width: 600px) {
+  #filter-w-row {
+    padding: 0.4em 0.4em;
+    width: auto;
+    display: inline-flex;
+    justify-content: flex-start;
+    right: auto;
+  }
+
+  .filter-w-item {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .filter-w-item>span {
+    padding: 0.1em 0.2em;
+  }
 }
 
 .filter-w-item:focus>span,
@@ -262,6 +310,7 @@ header {
   gap: var(--spacing-xl);
   width: 100%;
   box-sizing: border-box;
+  padding-top: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -275,26 +324,29 @@ header {
   flex-direction: column;
   height: 100%;
   background: var(--color-bg);
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
   /* box-shadow: 0 2px 8px rgba(0,0,0,0.03); */
 }
 
 .thumb-img-wrapper {
   width: 100%;
-  height: 250px;
+  aspect-ratio: 3 / 2;
+  height: auto;
   /* Set your desired max height */
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 var(--spacing-sm);
+  box-sizing: border-box;
   background: var(--color-bg);
   overflow: hidden;
 }
 
 .thumb-img-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -432,10 +484,14 @@ header {
   box-sizing: border-box;
 }
 
+.project.project-split {
+  max-width: 92vw;
+}
+
 .project h1 {
   font-weight: var(--font-weight-medium);
   font-style: normal;
-  font-size: 2.2rem;
+  font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem);
   color: var(--color-text-primary);
   margin-bottom: 0.2em;
   text-align: left;
@@ -444,7 +500,7 @@ header {
 .project em {
   font-weight: var(--font-weight-light);
   font-style: normal;
-  font-size: var(--font-size-base);
+  font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.1rem);
   color: var(--color-text-secondary);
   display: block;
   margin-bottom: 2.2em;
@@ -491,34 +547,35 @@ header {
 }
 
 .project-meta {
-  flex: 0 0 150px;
-  max-width: 150px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   text-align: left;
   padding-top: 0.5em;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 0.82rem + 0.25vw, 1rem);
   color: var(--color-text-secondary);
 }
 
 .project-meta h1 {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.5rem);
   font-weight: var(--font-weight-medium);
   margin-bottom: 0.5em;
   white-space: nowrap;
 }
 
 .project-meta-info {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 0.82rem + 0.25vw, 1rem);
   color: var(--color-text-secondary);
   line-height: 1.3;
 }
 
 .project-location {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 0.82rem + 0.25vw, 1rem);
   color: var(--color-text-secondary);
 }
 
 .project-year {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 0.82rem + 0.25vw, 1rem);
   color: var(--color-text-secondary);
 }
 
@@ -549,6 +606,28 @@ header {
   flex-direction: column;
   align-items: center;
   padding-top: 2.5em;
+}
+
+.project-split .project-main-centered {
+  max-width: 1320px;
+  align-items: stretch;
+}
+
+.project-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3vw;
+  width: 100%;
+  align-items: start;
+}
+
+.project-split-media img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.project-split-text .body {
+  margin-top: 0;
 }
 
 /* --- General Link Styles --- */
@@ -603,7 +682,17 @@ a:active {
     padding-top: 0;
     max-width: 100%;
   }
+
+  .project-split .project-main-centered {
+    max-width: 100%;
+  }
+
+  .project-split-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
+
 
 .header-stack {
   display: flex;
@@ -632,7 +721,7 @@ a:active {
 }
 
 .image-alt-text {
-  font-size: 0.85em;
+  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.95rem);
   color: var(--color-text-secondary);
   margin-bottom: 1em;
   text-align: left;
@@ -705,7 +794,7 @@ a:active {
     justify-content: flex-start;
     width: 100vw;
     box-sizing: border-box;
-    overflow-x: auto;
+    overflow-x: visible;
     padding-left: 0.5em;
     margin-top: 1.2em;
   }
@@ -731,14 +820,32 @@ a:active {
   }
 
   #filter-w-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5em;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.15em;
     margin: 0;
-    width: 100vw;
+    width: auto;
     left: 0;
-    right: 0;
-    position: relative;
+    right: auto;
+    position: absolute;
+    top: 100%;
+    z-index: 200;
+    display: inline-flex;
+    justify-content: flex-start;
+  }
+
+  .filter-w-item {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .filter-w-item>span {
+    padding: 0.1em 0.15em;
+  }
+
+  .grid {
+    padding-top: 2.5rem;
   }
 
   .filter-w-item {

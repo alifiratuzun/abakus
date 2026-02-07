@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('search');
   const filterToggle = document.getElementById('filter-toggle');
   const filterWRow = document.getElementById('filter-w-row');
+  const mainNav = document.querySelector('.main-nav');
 
   const slugify = (str = '') => str
     .toString()
@@ -38,12 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
       searchInput.classList.remove('active');
       searchInput.style.display = 'none';
       if (searchToggle) {
-        searchToggle.style.visibility = '';
+        searchToggle.style.display = '';
       }
     }
     if (filterWRow && filterToggle) {
       filterWRow.classList.remove('active');
       filterToggle.setAttribute('aria-expanded', 'false');
+      filterToggle.classList.remove('is-active');
+      if (mainNav && !mainNav.querySelector('.is-active')) {
+        mainNav.classList.remove('nav-has-active');
+      }
     }
   }
 
@@ -135,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.classList.add('active');
         searchInput.style.display = 'inline-block';
         searchInput.focus();
-        searchToggle.style.visibility = 'hidden';
+        searchToggle.style.display = 'none';
       }
     });
     searchInput.addEventListener('blur', () => {
@@ -143,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         searchInput.style.display = 'none';
         if (searchToggle) {
-          searchToggle.style.visibility = '';
+          searchToggle.style.display = '';
         }
       }, 200);
     });
@@ -166,6 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isOpen) {
         filterWRow.classList.add('active');
         filterToggle.setAttribute('aria-expanded', 'true');
+        filterToggle.classList.add('is-active');
+        if (mainNav) {
+          mainNav.classList.add('nav-has-active');
+        }
       }
     });
   }
@@ -207,4 +216,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-

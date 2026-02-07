@@ -2,5 +2,8 @@
   command = "eleventy"
   publish = "_site"
 
+[functions]
+  directory = "netlify/functions"
+
 [build.environment]
   SECRETS_SCAN_OMIT_KEYS = "SANITY_PROJECT_ID,SANITY_DATASET"

@@ -87,10 +87,23 @@ module.exports = function (eleventyConfig) {
     }
   });
 
+  function parseYear(value) {
+    if (!value) return -Infinity;
+    const match = String(value).match(/(\d{4})/);
+    return match ? Number(match[1]) : -Infinity;
+  }
+
   eleventyConfig.addCollection("project", function (collection) {
     if (useSanity) {
       const raw = fetchSanityProjects();
-      return raw.map((p) => ({
+      return raw
+        .slice()
+        .sort((a, b) => {
+          const by = parseYear(b.tarih) - parseYear(a.tarih);
+          if (by !== 0) return by;
+          return String(a.title || "").localeCompare(String(b.title || ""), "tr");
+        })
+        .map((p) => ({
         url: `/projects/${p.slug}/`,
         fileSlug: p.slug,
         data: {
@@ -108,7 +121,17 @@ module.exports = function (eleventyConfig) {
         },
       }));
     }
-    return collection.getFilteredByGlob("projects/*.md");
+    return collection
+      .getFilteredByGlob("projects/*.md")
+      .slice()
+      .sort((a, b) => {
+        const by = parseYear(b.data && b.data.tarih) - parseYear(a.data && a.data.tarih);
+        if (by !== 0) return by;
+        return String(a.data && a.data.title ? a.data.title : "").localeCompare(
+          String(b.data && b.data.title ? b.data.title : ""),
+          "tr"
+        );
+      });
   });
 
   // Set custom directories

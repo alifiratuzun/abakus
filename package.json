@@ -10,7 +10,8 @@
     "studio:build": "cd sanity && npm run build"
   },
   "dependencies": {
-    "@portabletext/to-html": "^3.0.0"
+    "@portabletext/to-html": "^3.0.0",
+    "sanity": "^5.8.1"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

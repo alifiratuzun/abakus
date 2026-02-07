@@ -10,24 +10,26 @@
 {% set _cover_image = p.data.cover_image if p.data and p.data.cover_image else cover_image %}
 {% set _footnote = p.data.footnote if p.data and p.data.footnote else footnote %}
 {% set _bodyHtml = p.data.bodyHtml if p.data and p.data.bodyHtml else "" %}
+{% set _preview_split = p.data.preview_split if p.data and p.data.preview_split else preview_split %}
 
 {% block content %}
-  <article class="project">
+  <article class="project{% if _preview_split %} project-split{% endif %}">
     {% block projectmeta %}
       <div class="project-meta">
         <h1>{{ _title }}</h1>
         <div class="project-meta-info aligned-meta">
           {% if _mimar %}<div class="project-meta-row"><span class="meta-label">Mimar:</span> <span class="meta-value">{{ _mimar }}</span></div>{% endif %}
           {% if _yer %}<div class="project-meta-row"><span class="meta-label">Yer:</span> <span class="meta-value">{{ _yer }}</span></div>{% endif %}
-          {% if _tur %}<div class="project-meta-row"><span class="meta-label">Tür:</span> <span class="meta-value">{{ _tur }}</span></div>{% endif %}
           {% if _tarih %}<div class="project-meta-row"><span class="meta-label">Tarih:</span> <span class="meta-value">{{ _tarih }}</span></div>{% endif %}
+          {% if _tur %}<div class="project-meta-row"><span class="meta-label">Tür:</span> <span class="meta-value">{{ _tur }}</span></div>{% endif %}
         </div>
       </div>
     {% endblock %}
     {% set heroImage = _cover_image or (_images and _images[0]) %}
+    {% set showHero = heroImage and not _preview_split %}
     {% set hasBlocks = content_blocks and content_blocks.length > 0 %}
     <div class="project-main project-main-centered">
-      {% if heroImage %}
+      {% if showHero %}
         <figure class="project-hero">
           <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(_title) }}">
           {% if heroImage.alt %}
@@ -52,22 +54,47 @@
           {% endif %}
         {% endfor %}
       {% else %}
-        {% if _images %}
-          {% for img in _images %}
-            <img src="{{ img.image }}" alt="{{ img.alt | default(_title) }}">
-            {% if img.alt %}
-              <div class="image-alt-text">{{ img.alt }}</div>
+        {% if _preview_split %}
+          <div class="project-split-grid">
+            <div class="project-split-media">
+              {% if _images %}
+                {% for img in _images %}
+                  <img src="{{ img.image }}" alt="{{ img.alt | default(_title) }}">
+                  {% if img.alt %}
+                    <div class="image-alt-text">{{ img.alt }}</div>
+                  {% endif %}
+                {% endfor %}
+              {% elseif heroImage %}
+                <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(_title) }}">
+                {% if heroImage.alt %}
+                  <div class="image-alt-text">{{ heroImage.alt }}</div>
+                {% endif %}
+              {% endif %}
+            </div>
+            <div class="project-split-text">
+              <div class="body">
+                {{ (_bodyHtml or content) | safe }}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          {% if _images %}
+            {% for img in _images %}
+              <img src="{{ img.image }}" alt="{{ img.alt | default(_title) }}">
+              {% if img.alt %}
+                <div class="image-alt-text">{{ img.alt }}</div>
+              {% endif %}
+            {% endfor %}
+          {% elseif heroImage %}
+            <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(_title) }}">
+            {% if heroImage.alt %}
+              <div class="image-alt-text">{{ heroImage.alt }}</div>
             {% endif %}
-          {% endfor %}
-        {% elseif heroImage %}
-          <img src="{{ heroImage.image }}" alt="{{ heroImage.alt | default(_title) }}">
-          {% if heroImage.alt %}
-            <div class="image-alt-text">{{ heroImage.alt }}</div>
           {% endif %}
+          <div class="body">
+            {{ (_bodyHtml or content) | safe }}
+          </div>
         {% endif %}
-        <div class="body">
-          {{ (_bodyHtml or content) | safe }}
-        </div>
       {% endif %}
     </div>
   </article>
