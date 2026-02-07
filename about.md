@@ -3,6 +3,8 @@ title: Bil
 layout: about.njk
 ---
 
-Abaküs, bağımsız bir mimarlık araştırmaları arşividir.
+ABAKÜS, bağımsız bir mimarlık araştırmaları arşividir.
+
+Tüm görsellerin hakları ilgili sahiplerine aittir.
 
 <a href="mailto:info@abakus.studio">info@abakus.studio</a>
